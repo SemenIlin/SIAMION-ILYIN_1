@@ -1,0 +1,6 @@
+E:\source\C#\ChangeValue\ChangeValue\bin\Debug\ChangeValue.exe.config
+E:\source\C#\ChangeValue\ChangeValue\bin\Debug\ChangeValue.exe
+E:\source\C#\ChangeValue\ChangeValue\bin\Debug\ChangeValue.pdb
+E:\source\C#\ChangeValue\ChangeValue\obj\Debug\ChangeValue.csprojResolveAssemblyReference.cache
+E:\source\C#\ChangeValue\ChangeValue\obj\Debug\ChangeValue.exe
+E:\source\C#\ChangeValue\ChangeValue\obj\Debug\ChangeValue.pdb
