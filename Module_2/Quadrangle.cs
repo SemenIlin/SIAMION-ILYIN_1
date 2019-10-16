@@ -55,7 +55,7 @@ namespace Module_2
 
             return Math.Round(perimeter, 2);
         }
-
+        
         private double CalculateQuadranglePerimeter(double firstSide, double secondSide, double thirdSide, double fourthSide)
         {
             double perimeter;
@@ -117,7 +117,6 @@ namespace Module_2
                 }
             }
         }
-
         private void InputFourthSide()
         {
             Console.WriteLine("Input the fourth side, please");
@@ -135,7 +134,6 @@ namespace Module_2
                 }
             }
         }
-
         private bool IsExistsQuadrangle(double firstSide, double secondSide, double thirdSide, double fourthSide)
         {
             if ((firstSide >= secondSide) && (firstSide >= thirdSide) && (firstSide >= fourthSide) && (firstSide < (secondSide + thirdSide + fourthSide)) ||
@@ -160,16 +158,19 @@ namespace Module_2
                 switch (formula)
                 {
                     case 1:
+                    
                         resultOperation = CalculateQuadrangleSquare(_firstSideQuadrangle);
 
                         break;
 
                     case 2:
+                    
                         resultOperation = CalculateQuadrangleSquare(_firstSideQuadrangle, _secondSideQuadrangle);
-
+                        
                         break;
 
                     case 3:
+
                         _isExistsQuadrangle = IsExistsQuadrangle(_firstSideQuadrangle, _secondSideQuadrangle, _thirdSideQuadrangle, _fourthSideQuadrangle);
 
                         if (_isExistsQuadrangle)
@@ -196,11 +197,13 @@ namespace Module_2
                 {
 
                     case 1:
+                    
                         resultOperation = CalculateQuadranglePerimeter(_firstSideQuadrangle);
 
                         break;
 
                     case 2:
+                    
                         resultOperation = CalculateQuadranglePerimeter(_firstSideQuadrangle, _secondSideQuadrangle);
 
                         break;

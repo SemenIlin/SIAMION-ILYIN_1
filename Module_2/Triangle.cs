@@ -40,7 +40,7 @@ namespace Module_2
 
             return Math.Round(square, 2);
         }
-
+        
         private double CalculateTriangleSquare(double firstSide, double secondSide, int angle)
         {
             double square = 0.0;
@@ -58,7 +58,7 @@ namespace Module_2
 
             return Math.Round(square, 2);
         }
-
+        
         private double CalculateTrianglePerimeter(double firstSide, double secondSide, double thirdSide)
         {
             double perimeter = 0;

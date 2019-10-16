@@ -3,10 +3,11 @@
 namespace Module_2
 {
     class Circle: ICalculate
-    {
+    {  
         private double _radius;
 
         private double CalculateCircleSquare(double radius)
+
         {
             double square = 0.0;
 
@@ -16,6 +17,7 @@ namespace Module_2
         }
 
         private double CalculateCirclePerimeter(double radius)
+
         {
             double perimeter = 0;
 
@@ -23,14 +25,17 @@ namespace Module_2
 
             return Math.Round(perimeter, 2);
         }
-
+        
         private void InputRadius()
+
         {
             Console.WriteLine("Input the radius, please");
 
             while (true)
             {
+
                 if ((double.TryParse(Console.ReadLine(), out _radius)) && (_radius > 0))
+
                 {
                     break;
                 }

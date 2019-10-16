@@ -12,6 +12,7 @@ namespace module_2_task_3
         public void Input()
         {
             Console.WriteLine("Input first value. ");
+          
             _dataFromUser = Console.ReadLine();
 
             Verify(_dataFromUser, ref _value1);
@@ -36,7 +37,7 @@ namespace module_2_task_3
 
         public float Value2
         {
-            get
+          get
             {
                 return _value2;
             }
@@ -53,9 +54,10 @@ namespace module_2_task_3
 
             value1 = value2;
             value2 = temp;
-
+          
             _value1 = value1;
             _value2 = value2;
+          
         }
 
         public void Show()

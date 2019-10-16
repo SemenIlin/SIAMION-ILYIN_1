@@ -54,10 +54,14 @@ namespace Module_2
                                   "Quadrangle input 3.\n");
 
                 if ((int.TryParse(Console.ReadLine(), out _typeShape)) && (_typeShape >= 1) && (_typeShape <= 3))
-                    break;
+                {
+                  break;
+                }
 
                 else
+                {
                     Console.WriteLine("Invalid input data, repeat again, please.");
+                }
             }
         }
 
@@ -71,15 +75,17 @@ namespace Module_2
 
                 Console.WriteLine("Calcilate square input 1. \n" +
                                   "Calculate perimeter input 2. \n");
-
+<
                 if ((int.TryParse(Console.ReadLine(), out _typeOperation)) && (_typeOperation >= 1) && (_typeOperation <= 2))
+                {
                     break;
+                }
 
                 else
                     Console.WriteLine("Invalid input data, repeat again, please.");
             }
         }
-
+      
         private void ChooseFormulaSquareForTriangle()
         {
             Console.WriteLine("Choose formula");
@@ -106,11 +112,11 @@ namespace Module_2
                         case 2:
 
                             _txtFormula = "All sides are known";
-
+                        
                             break;
 
                         case 3:
-
+                        
                             _txtFormula = "Two sides and angle between are known";
 
                             break;
@@ -154,17 +160,17 @@ namespace Module_2
 
                             break;
 
-                        case 2:
-
+                      case 2:
+                        
                             _txtFormula = "Two sides and angle between are known";
 
                             break;
 
                         case 3:
-
+                        
                             _txtFormula = "Two angles and side around them are known";
 
-                            break;
+                              break;
                     }
 
                     break;
@@ -187,7 +193,7 @@ namespace Module_2
 
                 Console.WriteLine();
                 Console.WriteLine("Radius is known input 1.");
-
+              
                 if ((int.TryParse(Console.ReadLine(), out _formula)) && (_formula == 1))
                 {
                     _txtFormula = "Radius is known";
@@ -216,7 +222,7 @@ namespace Module_2
                 if ((int.TryParse(Console.ReadLine(), out _formula)) && (_formula == 1))
                 {
                     _txtFormula= "Radius is known";
-
+                  
                     break;
                 }
 
@@ -285,6 +291,7 @@ namespace Module_2
                                   "Height and width are known input 2. \n" +
                                   "All sides are known input 3. \n");
 
+
                 if ((int.TryParse(Console.ReadLine(), out _formula)) && (_formula >= 1) && (_formula <= 3))
                 {
                     switch (_formula)
@@ -304,7 +311,6 @@ namespace Module_2
                         case 3:
 
                             _txtFormula = "All sides are known";
-
                             break;
                     }
                     break;
@@ -316,6 +322,7 @@ namespace Module_2
             }
 
             _txtOperation = "Perimeter";
+
         }
 
         public void ChooseFormula(int shape, int operation)
@@ -347,7 +354,7 @@ namespace Module_2
                     }
 
                     _txtShape = "Triangle";
-
+                
                     break;
 
                 case 3:
@@ -359,8 +366,8 @@ namespace Module_2
                     {
                         ChooseFormulaPerimeterForQuadrangle();
                     }
-
-                    _txtShape = "Quadrangle";
+                
+                    _txtShape = "Quadrangle";  
 
                     break;
 
@@ -404,7 +411,7 @@ namespace Module_2
 
                         additionalShape = $"Triangle with side {sideTriangle} and quadrangle with side {sideQuadrangle} have the same area";
                     }
-
+                
                     else if(_typeOperation == 2)
                     {
                         sideTriangle = triangle.GetParameterFromPerimeter(_result);
@@ -416,10 +423,12 @@ namespace Module_2
                     break;
 
                 case 2:
+                
                     if (_typeOperation == 1)
                     {
                         radius = circle.GetParameterFromSquare(_result);
                         sideQuadrangle = quadrangle.GetParameterFromSquare(_result);
+
 
                         additionalShape = $"Circle with radius {radius} and quadrangle with side {sideQuadrangle} have the same area";
                     }
@@ -435,7 +444,7 @@ namespace Module_2
                     break;
 
                 case 3:
-
+                
                     if (_typeOperation == 1)
                     {
                         radius = circle.GetParameterFromSquare(_result);

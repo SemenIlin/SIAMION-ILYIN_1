@@ -8,7 +8,7 @@ namespace module_2_task_1
 
         private int _countCompanies = 0;
         private float _taxPerCent = 0.0F;
-        private float _totalFix = 0.0F;        
+        private float _totalFix = 0.0F;      
 
         // Input data from user.
         public void Input()
@@ -78,7 +78,7 @@ namespace module_2_task_1
             }
 
             return "Incorrect data.";
-        }        
+        }    
 
         private void Verify(string data, ref int value)
         {
