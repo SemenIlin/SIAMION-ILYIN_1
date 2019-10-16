@@ -7,7 +7,6 @@ namespace Module_2
         private double _radius;
 
         private double CalculateCircleSquare(double radius)
-
         {
             double square = 0.0;
 
@@ -17,7 +16,6 @@ namespace Module_2
         }
 
         private double CalculateCirclePerimeter(double radius)
-
         {
             double perimeter = 0;
 
@@ -27,7 +25,6 @@ namespace Module_2
         }
         
         private void InputRadius()
-
         {
             Console.WriteLine("Input the radius, please");
 

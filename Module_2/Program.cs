@@ -57,7 +57,9 @@ namespace Module_2
                 Console.WriteLine("Continue press Enter, Exit press Esc. ");
 
                 if (Console.ReadKey().Key == ConsoleKey.Escape)
-                    break;
+				{
+					break;
+				}
 
                 Console.WriteLine();
             }

@@ -117,6 +117,7 @@ namespace Module_2
                 }
             }
         }
+		
         private void InputFourthSide()
         {
             Console.WriteLine("Input the fourth side, please");
@@ -134,6 +135,7 @@ namespace Module_2
                 }
             }
         }
+		
         private bool IsExistsQuadrangle(double firstSide, double secondSide, double thirdSide, double fourthSide)
         {
             if ((firstSide >= secondSide) && (firstSide >= thirdSide) && (firstSide >= fourthSide) && (firstSide < (secondSide + thirdSide + fourthSide)) ||
@@ -315,6 +317,5 @@ namespace Module_2
                 }
             }
         }
-
     }
 }
