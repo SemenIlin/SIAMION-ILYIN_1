@@ -75,14 +75,16 @@ namespace Module_2
 
                 Console.WriteLine("Calcilate square input 1. \n" +
                                   "Calculate perimeter input 2. \n");
-<
+
                 if ((int.TryParse(Console.ReadLine(), out _typeOperation)) && (_typeOperation >= 1) && (_typeOperation <= 2))
                 {
                     break;
                 }
 
                 else
+                {
                     Console.WriteLine("Invalid input data, repeat again, please.");
+                }
             }
         }
       
@@ -160,24 +162,26 @@ namespace Module_2
 
                             break;
 
-                      case 2:
-                        
+                        case 2:
+
                             _txtFormula = "Two sides and angle between are known";
 
                             break;
 
                         case 3:
-                        
+
                             _txtFormula = "Two angles and side around them are known";
 
-                              break;
+                            break;
                     }
 
                     break;
                 }
 
                 else
+                {
                     Console.WriteLine("Invalid input data. repeat again please.");
+                }
 
             }
 
@@ -193,7 +197,7 @@ namespace Module_2
 
                 Console.WriteLine();
                 Console.WriteLine("Radius is known input 1.");
-              
+
                 if ((int.TryParse(Console.ReadLine(), out _formula)) && (_formula == 1))
                 {
                     _txtFormula = "Radius is known";
@@ -202,7 +206,9 @@ namespace Module_2
                 }
 
                 else
+                {
                     Console.WriteLine("Invalid input data. repeat again please.");
+                }
 
             }
 
@@ -221,13 +227,15 @@ namespace Module_2
 
                 if ((int.TryParse(Console.ReadLine(), out _formula)) && (_formula == 1))
                 {
-                    _txtFormula= "Radius is known";
-                  
+                    _txtFormula = "Radius is known";
+
                     break;
                 }
 
                 else
+                {
                     Console.WriteLine("Invalid input data. repeat again please.");
+                }
 
             }
 
@@ -330,10 +338,12 @@ namespace Module_2
             switch (shape)
             {
                 case 1:
+
                     if (operation == 1)
                     {
                         ChooseFormulaSquareForCircle();
                     }
+
                     else if (operation == 2)
                     {
                         ChooseFormulaPerimeterForCircle();
@@ -344,10 +354,12 @@ namespace Module_2
                     break;
 
                 case 2:
+
                     if (operation == 1)
                     {
                         ChooseFormulaSquareForTriangle();
                     }
+
                     else if (operation == 2)
                     {
                         ChooseFormulaPerimeterForTriangle();
@@ -358,10 +370,12 @@ namespace Module_2
                     break;
 
                 case 3:
+
                     if (operation == 1)
                     {
                         ChooseFormulaSquareForQuadrangle();
                     }
+
                     else if (operation == 2)
                     {
                         ChooseFormulaPerimeterForQuadrangle();

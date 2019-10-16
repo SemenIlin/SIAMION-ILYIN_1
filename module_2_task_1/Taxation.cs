@@ -95,7 +95,7 @@ namespace module_2_task_1
         private void Verify(string data, ref float value)
         {
 
-            while ((!float.TryParse(data, out value)) || (value < 0))
+            while ((!float.TryParse(data, out value)) || (value < 0) || (value > 100))
             {
                 Console.WriteLine(OutputErrorMessage(data));
                 Console.WriteLine("Input value again.");
