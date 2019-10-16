@@ -4,26 +4,24 @@ namespace Module_2
 {
     class Triangle : ICalculate
     {
-        double height;
+        private double _height;       
+        private double _width;
        
-        double width;
+        private int _firstAngle; 
+        private int _secondAngle;        
        
-        int firstAngle;        
-       
-        int secondAngle;        
-       
-        double firstSideTriangle;
-       
-        double secondSideTriangle;
-       
-        double thirdSideTriangle;
+        private double _firstSideTriangle;
+        private double _secondSideTriangle;       
+        private double _thirdSideTriangle;
 
-        double ConvertAngle(double angle)
+        bool _isExistsTriangle;
+
+        private double ConvertAngle(double angle)
         {
             return angle * Math.PI / 180;
         }
 
-        double CalculateTriangleSquare(double height, double width)
+        private double CalculateTriangleSquare(double height, double width)
         {
             double square = 0.0;
 
@@ -32,7 +30,7 @@ namespace Module_2
             return Math.Round(square, 2);
         }
 
-        double CalculateTriangleSquare(double firstSide, double secondSide, double thirdSide)
+        private double CalculateTriangleSquare(double firstSide, double secondSide, double thirdSide)
         {
             double halfPerimetr = 0;
             double square = 0.0;
@@ -42,8 +40,8 @@ namespace Module_2
 
             return Math.Round(square, 2);
         }
-
-        double CalculateTriangleSquare(double firstSide, double secondSide, int angle)
+        
+        private double CalculateTriangleSquare(double firstSide, double secondSide, int angle)
         {
             double square = 0.0;
 
@@ -52,7 +50,7 @@ namespace Module_2
             return Math.Round(square, 2);
         }
 
-        double CalculateTriangleSquare(double side, int firstAngle, int secondAngle)
+        private double CalculateTriangleSquare(double side, int firstAngle, int secondAngle)
         {
             double square = 0.0;
 
@@ -60,8 +58,8 @@ namespace Module_2
 
             return Math.Round(square, 2);
         }
-
-        double CalculateTrianglePerimeter(double firstSide, double secondSide, double thirdSide)
+        
+        private double CalculateTrianglePerimeter(double firstSide, double secondSide, double thirdSide)
         {
             double perimeter = 0;
 
@@ -70,7 +68,7 @@ namespace Module_2
             return Math.Round(perimeter, 2);
         }
 
-        double CalculateTrianglePerimeter(double firstSide, double secondSide, int angleBetweenSide)
+        private double CalculateTrianglePerimeter(double firstSide, double secondSide, int angleBetweenSide)
         {
             double perimeter;
             double thirdSide;
@@ -82,7 +80,7 @@ namespace Module_2
             return Math.Round(perimeter, 2);
         }
 
-        double CalculateTrianglePerimeter(double side, int firstAngle, int secondAngle)
+        private double CalculateTrianglePerimeter(double side, int firstAngle, int secondAngle)
         {
             double perimeter;
             double secondSide;
@@ -103,13 +101,13 @@ namespace Module_2
             return Math.Round(perimeter, 2);
         }
 
-        void InputHeight()
+        private void InputHeight()
         {
             Console.WriteLine("Input a height, please");
 
             while (true)
             {
-                if ((double.TryParse(Console.ReadLine(), out height) && height > 0))
+                if ((double.TryParse(Console.ReadLine(), out _height)) && (_height > 0))
                 {
                     break;
                 }
@@ -121,13 +119,13 @@ namespace Module_2
             }            
         }
 
-        void InputWidth()
+        private void InputWidth()
         {
             Console.WriteLine("Input a width, please");
 
             while (true)
             {
-                if ((double.TryParse(Console.ReadLine(), out width) && width > 0))
+                if ((double.TryParse(Console.ReadLine(), out _width)) && (_width > 0))
                 {
                     break;
                 }
@@ -139,13 +137,13 @@ namespace Module_2
             }
         }
 
-        void InputFirstSide()
+        private void InputFirstSide()
         {
             Console.WriteLine("Input the first side, please");
 
             while (true)
             {
-                if ((double.TryParse(Console.ReadLine(), out firstSideTriangle) && firstSideTriangle > 0))
+                if ((double.TryParse(Console.ReadLine(), out _firstSideTriangle)) && (_firstSideTriangle > 0))
                 {
                     break;
                 }
@@ -157,13 +155,13 @@ namespace Module_2
             }
         }
 
-        void InputSecondSide()
+        private void InputSecondSide()
         {
             Console.WriteLine("Input the second side, please");
 
             while (true)
             {
-                if ((double.TryParse(Console.ReadLine(), out secondSideTriangle) && secondSideTriangle > 0))
+                if ((double.TryParse(Console.ReadLine(), out _secondSideTriangle)) && (_secondSideTriangle > 0))
                 {
                     break;
                 }
@@ -175,13 +173,13 @@ namespace Module_2
             }
         }
 
-        void InputThirdSide()
+        private void InputThirdSide()
         {
             Console.WriteLine("Input the third side, please");
 
             while (true)
             {
-                if ((double.TryParse(Console.ReadLine(), out thirdSideTriangle) && thirdSideTriangle > 0))
+                if ((double.TryParse(Console.ReadLine(), out _thirdSideTriangle)) && (_thirdSideTriangle > 0))
                 {
                     break;
                 }
@@ -193,13 +191,13 @@ namespace Module_2
             }
         }
 
-        void InputFirstAngle()
+        private void InputFirstAngle()
         {
             Console.WriteLine("Input the first angle, please");
 
             while (true)
             {
-                if ((int.TryParse(Console.ReadLine(), out firstAngle) &&firstAngle > 0))
+                if ((int.TryParse(Console.ReadLine(), out _firstAngle)) && (_firstAngle > 0))
                 {
                     break;
                 }
@@ -211,13 +209,13 @@ namespace Module_2
             }
         }
 
-        void InputSecondAngle()
+        private void InputSecondAngle()
         {
             Console.WriteLine("Input the second angle, please");
 
             while (true)
             {
-                if ((int.TryParse(Console.ReadLine(), out secondAngle) && secondAngle > 0))
+                if ((int.TryParse(Console.ReadLine(), out _secondAngle)) && (_secondAngle > 0))
                 {
                     break;
                 }
@@ -229,7 +227,7 @@ namespace Module_2
             }
         }
 
-        bool IsExistsTriangle(double firstSide, double secondSide, double thirdSide)
+        private bool IsExistsTriangle(double firstSide, double secondSide, double thirdSide)
         {
             if ((firstSide >= secondSide) && (firstSide >= thirdSide) && (firstSide < (secondSide + thirdSide)) ||
                (secondSide >= firstSide) && (secondSide >= thirdSide) && (secondSide < (firstSide + thirdSide)) ||
@@ -243,7 +241,7 @@ namespace Module_2
             }
         }
 
-        bool IsExistsTriangle(int firstAngle, int secondAngle)
+        private bool IsExistsTriangle(int firstAngle, int secondAngle)
         {
             if ((firstAngle + secondAngle) < 180)
             {
@@ -255,7 +253,7 @@ namespace Module_2
             }
         }
 
-        bool IsExistsTriangle(int firstAngle)
+        private bool IsExistsTriangle(int firstAngle)
         {
             if (firstAngle < 180)
             {
@@ -276,48 +274,55 @@ namespace Module_2
                 switch (formula)
                 {
                     case 1:
-                        resultOperation = CalculateTriangleSquare(height, width);
+
+                        resultOperation = CalculateTriangleSquare(_height, _width);
 
                         break;
 
                     case 2:
 
-                        if (IsExistsTriangle(firstSideTriangle, secondSideTriangle, thirdSideTriangle))
+                        _isExistsTriangle = IsExistsTriangle(_firstSideTriangle, _secondSideTriangle, _thirdSideTriangle);
+
+                        if (_isExistsTriangle)
                         {
-                            resultOperation = CalculateTriangleSquare(firstSideTriangle, secondSideTriangle, thirdSideTriangle);
+                            resultOperation = CalculateTriangleSquare(_firstSideTriangle, _secondSideTriangle, _thirdSideTriangle);
                         }
 
                         else
                         {
-                            Console.WriteLine($"The triangle with sides {firstSideTriangle}, {secondSideTriangle}, {thirdSideTriangle} cannot exist");
+                            Console.WriteLine($"The triangle with sides {_firstSideTriangle}, {_secondSideTriangle}, {_thirdSideTriangle} cannot exist");
                         }
 
                         break;
 
                     case 3:
 
-                        if (IsExistsTriangle(firstAngle))
+                        _isExistsTriangle = IsExistsTriangle(_firstAngle);
+
+                        if (_isExistsTriangle)
                         {
-                            resultOperation = CalculateTriangleSquare(firstSideTriangle, secondSideTriangle, firstAngle);
+                            resultOperation = CalculateTriangleSquare(_firstSideTriangle, _secondSideTriangle, _firstAngle);
                         }
 
                         else
                         {
-                            Console.WriteLine($"The triangle with angle {firstAngle} cannot exist");
+                            Console.WriteLine($"The triangle with angle {_firstAngle} cannot exist");
                         }
 
                         break;
 
                     case 4:
 
-                        if (IsExistsTriangle(firstAngle, secondAngle))
+                        _isExistsTriangle = IsExistsTriangle(_firstAngle, _secondAngle);
+
+                        if (_isExistsTriangle)
                         {
-                            resultOperation = CalculateTriangleSquare(firstSideTriangle, firstAngle, secondAngle);
+                            resultOperation = CalculateTriangleSquare(_firstSideTriangle, _firstAngle, _secondAngle);
                         }
 
                         else
                         {
-                            Console.WriteLine($"The triangle with angles {firstAngle}, {secondAngle} cannot exist");
+                            Console.WriteLine($"The triangle with angles {_firstAngle}, {_secondAngle} cannot exist");
                         }
 
                         break;
@@ -334,42 +339,48 @@ namespace Module_2
 
                     case 1:
 
-                        if (IsExistsTriangle(firstSideTriangle, secondSideTriangle, thirdSideTriangle))
+                        _isExistsTriangle = IsExistsTriangle(_firstSideTriangle, _secondSideTriangle, _thirdSideTriangle);
+
+                        if (_isExistsTriangle)
                         {
-                            resultOperation = CalculateTrianglePerimeter(firstSideTriangle, secondSideTriangle, thirdSideTriangle);
+                            resultOperation = CalculateTrianglePerimeter(_firstSideTriangle, _secondSideTriangle, _thirdSideTriangle);
                         }
 
                         else
                         {
-                            Console.WriteLine($"The triangle with sides {firstSideTriangle}, {secondSideTriangle}, {thirdSideTriangle} cannot exist");
+                            Console.WriteLine($"The triangle with sides {_firstSideTriangle}, {_secondSideTriangle}, {_thirdSideTriangle} cannot exist");
                         }
 
                         break;
 
                     case 2:
 
-                        if (IsExistsTriangle(firstAngle))
+                        _isExistsTriangle = IsExistsTriangle(_firstAngle);
+
+                        if (_isExistsTriangle)
                         {
-                            resultOperation = CalculateTrianglePerimeter(firstSideTriangle, secondSideTriangle, firstAngle);
+                            resultOperation = CalculateTrianglePerimeter(_firstSideTriangle, _secondSideTriangle, _firstAngle);
                         }
 
                         else
                         {
-                            Console.WriteLine($"The triangle with angle {firstAngle} cannot exist");
+                            Console.WriteLine($"The triangle with angle {_firstAngle} cannot exist");
                         }
 
                         break;
 
                     case 3:
 
-                        if (IsExistsTriangle(firstAngle, secondAngle))
+                        _isExistsTriangle = IsExistsTriangle(_firstAngle, _secondAngle);
+
+                        if (_isExistsTriangle)
                         {
-                            resultOperation = CalculateTrianglePerimeter(firstSideTriangle, firstAngle, secondAngle);
+                            resultOperation = CalculateTrianglePerimeter(_firstSideTriangle, _firstAngle, _secondAngle);
                         }
 
                         else
                         {
-                            Console.WriteLine($"The triangle with angles {firstAngle}, {secondAngle} cannot exist");
+                            Console.WriteLine($"The triangle with angles {_firstAngle}, {_secondAngle} cannot exist");
                         }
 
                         break;
@@ -384,20 +395,20 @@ namespace Module_2
 
         public double GetParameterFromPerimeter(double perimeter)
         {
-            firstSideTriangle = perimeter / 3;
+            _firstSideTriangle = perimeter / 3;
 
-            secondSideTriangle = thirdSideTriangle = firstSideTriangle;
+            _secondSideTriangle = _thirdSideTriangle = _firstSideTriangle;
 
-            return Math.Round(firstSideTriangle, 2);
+            return Math.Round(_firstSideTriangle, 2);
         }
 
         public double GetParameterFromSquare(double square)
         {
-            firstSideTriangle = Math.Pow(square / Math.Pow(0.1875, 0.5), 0.5);
+            _firstSideTriangle = Math.Pow(square / Math.Pow(0.1875, 0.5), 0.5);
 
-            secondSideTriangle = thirdSideTriangle = firstSideTriangle;
+            _secondSideTriangle = _thirdSideTriangle = _firstSideTriangle;
             
-            return Math.Round(firstSideTriangle, 2);
+            return Math.Round(_firstSideTriangle, 2);
         }
 
         public void InputData(int operation, int formula)

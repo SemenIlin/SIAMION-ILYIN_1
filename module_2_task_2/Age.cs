@@ -4,10 +4,10 @@ namespace module_2_task_2
 {
     class Age
     {
-        int userAge = 0;
-        string answerString = "";        
+        private int _userAge = 0;
+        private string _answerString = "";        
 
-        string OutputErrorMessage(string data)
+        private string OutputErrorMessage(string data)
         {
             char[] tempArray = data.ToCharArray();
 
@@ -65,7 +65,7 @@ namespace module_2_task_2
             return "Incorrect data.";
         }
 
-        void Verify(string data, ref int value)
+        private void Verify(string data, ref int value)
         {
             while ((!int.TryParse(data, out value)) || (value < 0))
             {
@@ -81,32 +81,38 @@ namespace module_2_task_2
         {
             Console.WriteLine("Input age.");
 
-            Verify(Console.ReadLine(), ref userAge);
+            Verify(Console.ReadLine(), ref _userAge);
         }
 
-        public int UserAge { get { return userAge; } }
+        public int UserAge
+        {
+            get
+            {
+                return _userAge;
+            }
+        }
 
         // Output answer on query.
         public string GenerateAnswer(int age)
         {
-            answerString = "";
+            _answerString = "";
 
             if ((age % 2 == 0) && (age > 18))
             {
-                answerString = "Congratulations on your 18th birthday.";
+                _answerString = "Congratulations on your 18th birthday.";
             }
 
             else if ((age % 2 != 0) && (age < 18) && (age > 13))
             {
-                answerString = "Congratulations on moving to high school.";
+                _answerString = "Congratulations on moving to high school.";
             }
 
-            return answerString;
+            return _answerString;
         }
 
         public void Show()
         {
-            Console.WriteLine(answerString);
+            Console.WriteLine(_answerString);
         }
     }
 }

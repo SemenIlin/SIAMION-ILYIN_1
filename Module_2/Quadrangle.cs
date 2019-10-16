@@ -4,16 +4,15 @@ namespace Module_2
 {
     class Quadrangle : ICalculate
     {
-        public double firstSideQuadrangle;
+        private double _firstSideQuadrangle;
+        private double _secondSideQuadrangle;
+        private double _thirdSideQuadrangle;
+        private double _fourthSideQuadrangle;
 
-        public double secondSideQuadrangle;
-
-        public double thirdSideQuadrangle;
-
-        public double fourthSideQuadrangle;
+        private bool _isExistsQuadrangle;
 
         // If Quadrangle is square.
-        double CalculateQuadrangleSquare(double side)
+        private double CalculateQuadrangleSquare(double side)
         {
             double square;
             square = Math.Pow(side, 2);
@@ -21,7 +20,7 @@ namespace Module_2
             return Math.Round(square, 2);
         }
         // If Quadrangle is rectangle.
-        double CalculateQuadrangleSquare(double firstSide, double secondSide)
+        private double CalculateQuadrangleSquare(double firstSide, double secondSide)
         {
             double square;
             square = firstSide * secondSide;
@@ -29,7 +28,7 @@ namespace Module_2
             return Math.Round(square, 2);
         }
 
-        double CalculateQuadrangleSquare(double firstSide, double secondSide, double thirdSide, double fourthSide)
+        private double CalculateQuadrangleSquare(double firstSide, double secondSide, double thirdSide, double fourthSide)
         {
             double square;
             double halfPerimeter;
@@ -40,7 +39,7 @@ namespace Module_2
             return Math.Round(square, 2);
         }
         // If quadrangle is square.
-        double CalculateQuadranglePerimeter(double side)
+        private double CalculateQuadranglePerimeter(double side)
         {
             double perimeter;
             perimeter = 4 * side;
@@ -49,15 +48,15 @@ namespace Module_2
         }
 
         // If quadrangle is rectangle
-        double CalculateQuadranglePerimeter(double firstSide, double secondSide)
+        private double CalculateQuadranglePerimeter(double firstSide, double secondSide)
         {
             double perimeter;
             perimeter = 2 * (firstSide + secondSide);
 
             return Math.Round(perimeter, 2);
         }
-
-        double CalculateQuadranglePerimeter(double firstSide, double secondSide, double thirdSide, double fourthSide)
+        
+        private double CalculateQuadranglePerimeter(double firstSide, double secondSide, double thirdSide, double fourthSide)
         {
             double perimeter;
             perimeter = firstSide + secondSide + thirdSide + fourthSide;
@@ -65,13 +64,13 @@ namespace Module_2
             return Math.Round(perimeter, 2);
         }
 
-        void InputFirstSide()
+        private void InputFirstSide()
         {
             Console.WriteLine("Input the first side, please");
 
             while (true)
             {
-                if ((double.TryParse(Console.ReadLine(), out firstSideQuadrangle) && firstSideQuadrangle > 0))
+                if ((double.TryParse(Console.ReadLine(), out _firstSideQuadrangle)) && (_firstSideQuadrangle > 0))
                 {
                     break;
                 }
@@ -83,13 +82,13 @@ namespace Module_2
             }
         }
 
-        void InputSecondSide()
+        private void InputSecondSide()
         {
             Console.WriteLine("Input the second side, please");
 
             while (true)
             {
-                if ((double.TryParse(Console.ReadLine(), out secondSideQuadrangle) && secondSideQuadrangle > 0))
+                if ((double.TryParse(Console.ReadLine(), out _secondSideQuadrangle)) && (_secondSideQuadrangle > 0))
                 {
                     break;
                 }
@@ -101,13 +100,13 @@ namespace Module_2
             }
         }
 
-        void InputThirdSide()
+        private void InputThirdSide()
         {
             Console.WriteLine("Input the third side, please");
 
             while (true)
             {
-                if ((double.TryParse(Console.ReadLine(), out thirdSideQuadrangle) && thirdSideQuadrangle > 0))
+                if ((double.TryParse(Console.ReadLine(), out _thirdSideQuadrangle)) && (_thirdSideQuadrangle > 0))
                 {
                     break;
                 }
@@ -118,14 +117,13 @@ namespace Module_2
                 }
             }
         }
-
-        void InputFourthSide()
+        private void InputFourthSide()
         {
             Console.WriteLine("Input the fourth side, please");
 
             while (true)
             {
-                if ((double.TryParse(Console.ReadLine(), out fourthSideQuadrangle) && fourthSideQuadrangle > 0))
+                if ((double.TryParse(Console.ReadLine(), out _fourthSideQuadrangle)) && (_fourthSideQuadrangle > 0))
                 {
                     break;
                 }
@@ -136,8 +134,7 @@ namespace Module_2
                 }
             }
         }
-
-        bool IsExistsQuadrangle(double firstSide, double secondSide, double thirdSide, double fourthSide)
+        private bool IsExistsQuadrangle(double firstSide, double secondSide, double thirdSide, double fourthSide)
         {
             if ((firstSide >= secondSide) && (firstSide >= thirdSide) && (firstSide >= fourthSide) && (firstSide < (secondSide + thirdSide + fourthSide)) ||
                (secondSide >= firstSide) && (secondSide >= thirdSide) && (secondSide >= fourthSide) && (secondSide < (firstSide + thirdSide + fourthSide)) ||
@@ -161,26 +158,30 @@ namespace Module_2
                 switch (formula)
                 {
                     case 1:
-                        resultOperation = CalculateQuadrangleSquare(firstSideQuadrangle);
+                    
+                        resultOperation = CalculateQuadrangleSquare(_firstSideQuadrangle);
 
                         break;
 
                     case 2:
-                        resultOperation = CalculateQuadrangleSquare(firstSideQuadrangle, secondSideQuadrangle);
-
+                    
+                        resultOperation = CalculateQuadrangleSquare(_firstSideQuadrangle, _secondSideQuadrangle);
+                        
                         break;
 
                     case 3:
 
-                        if (IsExistsQuadrangle(firstSideQuadrangle, secondSideQuadrangle, thirdSideQuadrangle, fourthSideQuadrangle))
+                        _isExistsQuadrangle = IsExistsQuadrangle(_firstSideQuadrangle, _secondSideQuadrangle, _thirdSideQuadrangle, _fourthSideQuadrangle);
+
+                        if (_isExistsQuadrangle)
 
                         {
-                            resultOperation = CalculateQuadrangleSquare(firstSideQuadrangle, secondSideQuadrangle, thirdSideQuadrangle, fourthSideQuadrangle);
+                            resultOperation = CalculateQuadrangleSquare(_firstSideQuadrangle, _secondSideQuadrangle, _thirdSideQuadrangle, _fourthSideQuadrangle);
                         }
 
                         else
                         {
-                            Console.WriteLine($"The quadrangle with sides {firstSideQuadrangle}, {secondSideQuadrangle}, {thirdSideQuadrangle}, {fourthSideQuadrangle} cannot exist");
+                            Console.WriteLine($"The quadrangle with sides {_firstSideQuadrangle}, {_secondSideQuadrangle}, {_thirdSideQuadrangle}, {_fourthSideQuadrangle} cannot exist");
                         }
 
                         break;
@@ -196,25 +197,29 @@ namespace Module_2
                 {
 
                     case 1:
-                        resultOperation = CalculateQuadranglePerimeter(firstSideQuadrangle);
+                    
+                        resultOperation = CalculateQuadranglePerimeter(_firstSideQuadrangle);
 
                         break;
 
                     case 2:
-                        resultOperation = CalculateQuadranglePerimeter(firstSideQuadrangle, secondSideQuadrangle);
+                    
+                        resultOperation = CalculateQuadranglePerimeter(_firstSideQuadrangle, _secondSideQuadrangle);
 
                         break;
 
                     case 3:
 
-                        if (IsExistsQuadrangle(firstSideQuadrangle, secondSideQuadrangle, thirdSideQuadrangle, fourthSideQuadrangle))
+                        _isExistsQuadrangle = IsExistsQuadrangle(_firstSideQuadrangle, _secondSideQuadrangle, _thirdSideQuadrangle, _fourthSideQuadrangle);
+
+                        if (_isExistsQuadrangle)
                         {
-                            resultOperation = CalculateQuadranglePerimeter(firstSideQuadrangle, secondSideQuadrangle, thirdSideQuadrangle, fourthSideQuadrangle);
+                            resultOperation = CalculateQuadranglePerimeter(_firstSideQuadrangle, _secondSideQuadrangle, _thirdSideQuadrangle, _fourthSideQuadrangle);
                         }
 
                         else
                         {
-                            Console.WriteLine($"The quadrangle with sides {firstSideQuadrangle}, {secondSideQuadrangle}, {thirdSideQuadrangle}, {fourthSideQuadrangle} cannot exist");
+                            Console.WriteLine($"The quadrangle with sides {_firstSideQuadrangle}, {_secondSideQuadrangle}, {_thirdSideQuadrangle}, {_fourthSideQuadrangle} cannot exist");
                         }
 
                         break;
@@ -229,20 +234,20 @@ namespace Module_2
 
         public double GetParameterFromPerimeter(double perimeter)
         {
-            firstSideQuadrangle = perimeter / 4;
+            _firstSideQuadrangle = perimeter / 4;
 
-            secondSideQuadrangle = thirdSideQuadrangle = fourthSideQuadrangle = firstSideQuadrangle;
+            _secondSideQuadrangle = _thirdSideQuadrangle = _fourthSideQuadrangle = _firstSideQuadrangle;
 
-            return Math.Round(firstSideQuadrangle, 2);
+            return Math.Round(_firstSideQuadrangle, 2);
         }
 
         public double GetParameterFromSquare(double square)
         {
-            firstSideQuadrangle = Math.Pow(square, 0.5);
+            _firstSideQuadrangle = Math.Pow(square, 0.5);
 
-            secondSideQuadrangle = thirdSideQuadrangle = fourthSideQuadrangle = firstSideQuadrangle;
+            _secondSideQuadrangle = _thirdSideQuadrangle = _fourthSideQuadrangle = _firstSideQuadrangle;
 
-            return Math.Round(firstSideQuadrangle, 2);
+            return Math.Round(_firstSideQuadrangle, 2);
         }
 
         public void InputData(int operation, int formula)

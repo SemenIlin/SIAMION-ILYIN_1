@@ -3,10 +3,11 @@
 namespace Module_2
 {
     class Circle: ICalculate
-    {
-        public double radius;
+    {  
+        private double _radius;
 
-        double CalculateCircleSquare(double radius)
+        private double CalculateCircleSquare(double radius)
+
         {
             double square = 0.0;
 
@@ -15,7 +16,8 @@ namespace Module_2
             return Math.Round(square, 2);
         }
 
-        double CalculateCirclePerimeter(double radius)
+        private double CalculateCirclePerimeter(double radius)
+
         {
             double perimeter = 0;
 
@@ -23,14 +25,17 @@ namespace Module_2
 
             return Math.Round(perimeter, 2);
         }
+        
+        private void InputRadius()
 
-        void InputRadius()
         {
             Console.WriteLine("Input the radius, please");
 
             while (true)
             {
-                if ((double.TryParse(Console.ReadLine(), out radius) && radius > 0))
+
+                if ((double.TryParse(Console.ReadLine(), out _radius)) && (_radius > 0))
+
                 {
                     break;
                 }
@@ -58,31 +63,31 @@ namespace Module_2
         {
             if (operation == 1)
             {
-                return CalculateCircleSquare(radius);
+                return CalculateCircleSquare(_radius);
             }
 
             else 
             {
-                return CalculateCirclePerimeter(radius);
+                return CalculateCirclePerimeter(_radius);
             }
         }
 
         public double GetParameterFromPerimeter(double perimeter)
         {
-            radius = 0.0;
+            _radius = 0.0;
 
-            radius = perimeter /(2 * Math.PI);
+            _radius = perimeter /(2 * Math.PI);
 
-            return Math.Round(radius, 2);
+            return Math.Round(_radius, 2);
         }
 
         public double GetParameterFromSquare(double square)
         {
-            radius = 0.0;
+            _radius = 0.0;
 
-            radius = Math.Pow((square / Math.PI), 0.5);
+            _radius = Math.Pow((square / Math.PI), 0.5);
 
-            return Math.Round(radius, 2);
+            return Math.Round(_radius, 2);
         }
     }
 }

@@ -4,33 +4,47 @@ namespace module_2_task_3
 {
     class ChangeValue
     {
-        float value1 = 0F;
-        float value2 = 0F;
-        string dataFromUser = "";
+        private float _value1 = 0F;
+        private float _value2 = 0F;
+        private string _dataFromUser;
 
         // Input date from user.
         public void Input()
         {
             Console.WriteLine("Input first value. ");
-            dataFromUser = Console.ReadLine();
+          
+            _dataFromUser = Console.ReadLine();
 
-            Verify(dataFromUser, ref value1);
+            Verify(_dataFromUser, ref _value1);
 
             Console.WriteLine("Input second value. ");
-            dataFromUser = Console.ReadLine();
+            _dataFromUser = Console.ReadLine();
 
-            Verify(dataFromUser, ref value2);
+            Verify(_dataFromUser, ref _value2);
         }
 
-        public float Value1 {
-            get { return value1; }
-            set { value1 = value; }
+        public float Value1
+        {
+            get
+            {
+                return _value1;
+            }
+            set
+            {
+                _value1 = value;
+            }
         }
 
         public float Value2
         {
-            get { return value2; }
-            set { value2 = value; }
+          get
+            {
+                return _value2;
+            }
+            set
+            {
+                _value2 = value;
+            }
         }
 
         public void Change(ref float value1,ref float value2)
@@ -40,17 +54,18 @@ namespace module_2_task_3
 
             value1 = value2;
             value2 = temp;
-
-            this.value1 = value1;
-            this.value2 = value2;
+          
+            _value1 = value1;
+            _value2 = value2;
+          
         }
 
         public void Show()
         {
-            Console.WriteLine($"After change first value is {value1}, second value is {value2}.");
+            Console.WriteLine($"After change first value is {_value1}, second value is {_value2}.");
         }
 
-        void Verify(string data, ref float val)
+        private void Verify(string data, ref float val)
         {
 
             while (!float.TryParse(data, out val))
