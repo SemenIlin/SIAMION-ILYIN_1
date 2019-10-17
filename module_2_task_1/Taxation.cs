@@ -19,7 +19,6 @@ namespace module_2_task_1
                 {
                     continue;
                 }
-
                 else if( ch == '.')
                 {
                     countPoint++;
@@ -29,7 +28,6 @@ namespace module_2_task_1
                        return "Incorrect data.";
                     }
                 }
-
                 else if (ch == '-')
                 {
                     countSign++;
@@ -39,7 +37,6 @@ namespace module_2_task_1
                         return "Incorrect data.";
                     }
                 }
-
                 else
                 {
                     return "Incorrect data.";
@@ -50,12 +47,10 @@ namespace module_2_task_1
             {
                 return "Input data < 0.";
             }
-
             else if((countSign == 0) && (countPoint == 1))
             {
                 return "Input data include '.' in place ','.";
             }
-
             else if((countSign == 1) && (countPoint == 1))
             {
                 return "Input data < 0. " + "Input data include '.' in place ','.";
@@ -69,7 +64,6 @@ namespace module_2_task_1
             while ((!int.TryParse(data, out value)) || (value < 0))
             {
                 Console.WriteLine(OutputErrorMessage(data));
-
                 Console.WriteLine("Input value again.");
 
                 data = Console.ReadLine();
@@ -78,7 +72,6 @@ namespace module_2_task_1
 
         public void Verify(string data, ref float value)
         {
-
             while ((!float.TryParse(data, out value)) || (value < 0) || (value > 100))
             {
                 Console.WriteLine(OutputErrorMessage(data));

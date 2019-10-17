@@ -19,7 +19,6 @@ namespace module_2_task_2
                 {
                     continue;
                 }
-
                 else if (ch == '.')
                 {
                     countPoint++;
@@ -29,7 +28,6 @@ namespace module_2_task_2
                         return "Incorrect data.";
                     }
                 }
-
                 else if (ch == '-')
                 {
                     countSign++;
@@ -39,7 +37,6 @@ namespace module_2_task_2
                         return "Incorrect data.";
                     }
                 }
-
                 else
                 {
                     return "Incorrect data.";
@@ -50,12 +47,10 @@ namespace module_2_task_2
             {
                 return "Input data < 0.";
             }
-
             else if ((countSign == 0) && (countPoint == 1))
             {
                 return "Input data include '.' in place ','.";
             }
-
             else if ((countSign == 1) && (countPoint == 1))
             {
                 return "Input data < 0. " + "Input data include '.' in place ','.";
@@ -69,7 +64,6 @@ namespace module_2_task_2
             while ((!int.TryParse(data, out value)) || (value < 0))
             {
                 Console.WriteLine(OutputErrorMessage(data));
-
                 Console.WriteLine("Input value again.");
 
                 data = Console.ReadLine();
@@ -85,7 +79,6 @@ namespace module_2_task_2
             {
                 _answerString = "Congratulations on your 18th birthday.";
             }
-
             else if ((age % 2 != 0) && (age < 18) && (age > 13))
             {
                 _answerString = "Congratulations on moving to high school.";

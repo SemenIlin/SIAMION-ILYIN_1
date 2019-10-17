@@ -121,7 +121,6 @@ namespace Module_2
             {
                 return true;
             }
-
             else
             {
                 return false;
@@ -134,7 +133,6 @@ namespace Module_2
             {
                 return true;
             }
-
             else
             {
                 return false;
@@ -147,7 +145,6 @@ namespace Module_2
             {
                 return true;
             }
-
             else
             {
                 return false;
@@ -169,12 +166,10 @@ namespace Module_2
 
                     case 2:
                         _isExistsTriangle = IsExistsTriangle(_firstSideTriangle, _secondSideTriangle, _thirdSideTriangle);
-
                         if (_isExistsTriangle)
                         {
                             resultOperation = CalculateTriangleSquare(_firstSideTriangle, _secondSideTriangle, _thirdSideTriangle);
                         }
-
                         else
                         {
                             Console.WriteLine($"The triangle with sides {_firstSideTriangle}, {_secondSideTriangle}, {_thirdSideTriangle} cannot exist");
@@ -184,12 +179,10 @@ namespace Module_2
 
                     case 3:
                         _isExistsTriangle = IsExistsTriangle(_firstAngle);
-
                         if (_isExistsTriangle)
                         {
                             resultOperation = CalculateTriangleSquare(_firstSideTriangle, _secondSideTriangle, _firstAngle);
                         }
-
                         else
                         {
                             Console.WriteLine($"The triangle with angle {_firstAngle} cannot exist");
@@ -199,12 +192,10 @@ namespace Module_2
 
                     case 4:
                         _isExistsTriangle = IsExistsTriangle(_firstAngle, _secondAngle);
-
                         if (_isExistsTriangle)
                         {
                             resultOperation = CalculateTriangleSquare(_firstSideTriangle, _firstAngle, _secondAngle);
                         }
-
                         else
                         {
                             Console.WriteLine($"The triangle with angles {_firstAngle}, {_secondAngle} cannot exist");
@@ -224,12 +215,10 @@ namespace Module_2
 
                     case 1:
                         _isExistsTriangle = IsExistsTriangle(_firstSideTriangle, _secondSideTriangle, _thirdSideTriangle);
-
                         if (_isExistsTriangle)
                         {
                             resultOperation = CalculateTrianglePerimeter(_firstSideTriangle, _secondSideTriangle, _thirdSideTriangle);
                         }
-
                         else
                         {
                             Console.WriteLine($"The triangle with sides {_firstSideTriangle}, {_secondSideTriangle}, {_thirdSideTriangle} cannot exist");
@@ -239,12 +228,10 @@ namespace Module_2
 
                     case 2:
                         _isExistsTriangle = IsExistsTriangle(_firstAngle);
-
                         if (_isExistsTriangle)
                         {
                             resultOperation = CalculateTrianglePerimeter(_firstSideTriangle, _secondSideTriangle, _firstAngle);
                         }
-
                         else
                         {
                             Console.WriteLine($"The triangle with angle {_firstAngle} cannot exist");
@@ -254,12 +241,10 @@ namespace Module_2
 
                     case 3:
                         _isExistsTriangle = IsExistsTriangle(_firstAngle, _secondAngle);
-
                         if (_isExistsTriangle)
                         {
                             resultOperation = CalculateTrianglePerimeter(_firstSideTriangle, _firstAngle, _secondAngle);
                         }
-
                         else
                         {
                             Console.WriteLine($"The triangle with angles {_firstAngle}, {_secondAngle} cannot exist");
@@ -278,7 +263,6 @@ namespace Module_2
         public double GetParameterFromPerimeter(double perimeter)
         {
             _firstSideTriangle = perimeter / 3;
-
             _secondSideTriangle = _thirdSideTriangle = _firstSideTriangle;
 
             return Math.Round(_firstSideTriangle, 2);
@@ -287,7 +271,6 @@ namespace Module_2
         public double GetParameterFromSquare(double square)
         {
             _firstSideTriangle = Math.Pow(square / Math.Pow(0.1875, 0.5), 0.5);
-
             _secondSideTriangle = _thirdSideTriangle = _firstSideTriangle;
 
             return Math.Round(_firstSideTriangle, 2);

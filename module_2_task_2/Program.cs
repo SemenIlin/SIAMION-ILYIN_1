@@ -12,12 +12,10 @@ namespace module_2_task_2
 
             while (true)
             {
-
                 Console.WriteLine("Input age.");
                 age.Verify(Console.ReadLine(), ref _userAge);                
 
                 age.GenerateAnswer(_userAge);
-
                 age.Show();
 
                 Console.WriteLine();

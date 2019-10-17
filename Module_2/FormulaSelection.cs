@@ -27,7 +27,6 @@ namespace Module_2
             while (true)
             {
                 Console.WriteLine();
-
                 Console.WriteLine("Circle input 1. \n" +
                                   "Triangle input 2. \n" +
                                   "Quadrangle input 3.\n");
@@ -36,7 +35,6 @@ namespace Module_2
                 {
                   break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data, repeat again, please.");
@@ -51,7 +49,6 @@ namespace Module_2
             while (true)
             {
                 Console.WriteLine();
-
                 Console.WriteLine("Calcilate square input 1. \n" +
                                   "Calculate perimeter input 2. \n");
 
@@ -59,7 +56,6 @@ namespace Module_2
                 {
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data, repeat again, please.");
@@ -74,7 +70,6 @@ namespace Module_2
             while (true)
             {
                 Console.WriteLine();
-
                 Console.WriteLine("Height and width are known input 1. \n" +
                                   "All sides are known input 2. \n" +
                                   "Two sides and angle between are known input 3. \n" +
@@ -82,28 +77,24 @@ namespace Module_2
 
                 if ((int.TryParse(Console.ReadLine(), out _formula)) && (_formula >= 1) && (_formula <= 4))
                 {
-                    switch (_formula) 
+                    switch (_formula)
                     {
                         case 1:
-
                             _txtFormula = "Height and width are known";
 
                             break;
 
                         case 2:
-
                             _txtFormula = "All sides are known";
-                        
+
                             break;
 
                         case 3:
-                        
                             _txtFormula = "Two sides and angle between are known";
 
                             break;
 
                         case 4:
-
                             _txtFormula = "Two angles and side around them are known";
 
                             break;
@@ -112,8 +103,9 @@ namespace Module_2
                     break;
                 }
                 else
+                {
                     Console.WriteLine("Invalid input data. repeat again please.");
-
+                }
             }
 
             _txtOperation = "Square";
@@ -152,7 +144,6 @@ namespace Module_2
 
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data. repeat again please.");
@@ -177,12 +168,10 @@ namespace Module_2
 
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data. repeat again please.");
                 }
-
             }
 
             _txtOperation = "Square";
@@ -195,7 +184,6 @@ namespace Module_2
             while (true)
             {
                 Console.WriteLine();
-
                 Console.WriteLine("Radius is known input 1.");
 
                 if ((int.TryParse(Console.ReadLine(), out _formula)) && (_formula == 1))
@@ -204,12 +192,10 @@ namespace Module_2
 
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data. repeat again please.");
                 }
-
             }
 
             _txtOperation = "Perimeter";
@@ -222,7 +208,6 @@ namespace Module_2
             while (true)
             {
                 Console.WriteLine();
-
                 Console.WriteLine("One side is known input 1. \n" + 
                                   "Height and width are known input 2. \n"+
                                   "All sides are known input 3. \n");
@@ -250,8 +235,9 @@ namespace Module_2
                     break;
                 }
                 else
+                {
                     Console.WriteLine("Invalid input data. repeat again please.");
-
+                }
             }
 
             _txtOperation = "Square";
@@ -264,11 +250,9 @@ namespace Module_2
             while (true)
             {
                 Console.WriteLine();
-
                 Console.WriteLine("One side is known input 1. \n" +
                                   "Height and width are known input 2. \n" +
                                   "All sides are known input 3. \n");
-
 
                 if ((int.TryParse(Console.ReadLine(), out _formula)) && (_formula >= 1) && (_formula <= 3))
                 {
@@ -290,10 +274,10 @@ namespace Module_2
                     }
                     break;
                 }
-
                 else
+                {
                     Console.WriteLine("Invalid input data. repeat again please.");
-
+                }
             }
 
             _txtOperation = "Perimeter";
@@ -308,7 +292,6 @@ namespace Module_2
                     {
                         ChooseFormulaSquareForCircle();
                     }
-
                     else if (operation == 2)
                     {
                         ChooseFormulaPerimeterForCircle();
@@ -323,7 +306,6 @@ namespace Module_2
                     {
                         ChooseFormulaSquareForTriangle();
                     }
-
                     else if (operation == 2)
                     {
                         ChooseFormulaPerimeterForTriangle();
@@ -338,7 +320,6 @@ namespace Module_2
                     {
                         ChooseFormulaSquareForQuadrangle();                        
                     }
-
                     else if (operation == 2)
                     {
                         ChooseFormulaPerimeterForQuadrangle();

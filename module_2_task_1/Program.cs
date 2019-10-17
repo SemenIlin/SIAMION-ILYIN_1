@@ -21,7 +21,6 @@ namespace module_2_task_1
                 taxation.Verify(Console.ReadLine(), ref _tax);
 
                 _totalFix = taxation.CalculateTotalTax(_countCompanies, _tax);
-
                 taxation.Show(_totalFix);
 
                 Console.WriteLine();

@@ -30,7 +30,6 @@ namespace Module_2
                     case 1:
                         getDataFromUser.InputDataRadius(formulaSelection.TypeOperation,ref circle);
                         getDataFromUser.Calculate(circle, formulaSelection.TypeOperation, formulaSelection.Formula);
-
                         getDataFromUser.Show(formulaSelection.TypeShape, formulaSelection.TypeOperation, formulaSelection.TxtShape, formulaSelection.TxtOperation, formulaSelection.TxtFormula, circle, triangle, quadrangle);
 
                         break;
@@ -38,7 +37,6 @@ namespace Module_2
                     case 2:
                         getDataFromUser.InputDataTriangle(formulaSelection.TypeOperation, formulaSelection.Formula, ref triangle);
                         getDataFromUser.Calculate(triangle, formulaSelection.TypeOperation, formulaSelection.Formula);
-
                         getDataFromUser.Show(formulaSelection.TypeShape, formulaSelection.TypeOperation, formulaSelection.TxtShape, formulaSelection.TxtOperation, formulaSelection.TxtFormula, circle, triangle, quadrangle);
 
                         break;
@@ -46,7 +44,6 @@ namespace Module_2
                     case 3:
                         getDataFromUser.InputDataQuadrangle(formulaSelection.TypeOperation, formulaSelection.Formula,ref quadrangle);
                         getDataFromUser.Calculate(quadrangle, formulaSelection.TypeOperation, formulaSelection.Formula);
-
                         getDataFromUser.Show(formulaSelection.TypeShape, formulaSelection.TypeOperation,formulaSelection.TxtShape, formulaSelection.TxtOperation, formulaSelection.TxtFormula, circle, triangle, quadrangle);
 
                         break;

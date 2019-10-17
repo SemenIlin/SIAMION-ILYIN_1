@@ -105,13 +105,10 @@ namespace Module_2
 
                     case 3:
                         _isExistsQuadrangle = IsExistsQuadrangle(_firstSideQuadrangle, _secondSideQuadrangle, _thirdSideQuadrangle, _fourthSideQuadrangle);
-
                         if (_isExistsQuadrangle)
-
                         {
                             resultOperation = CalculateQuadrangleSquare(_firstSideQuadrangle, _secondSideQuadrangle, _thirdSideQuadrangle, _fourthSideQuadrangle);
                         }
-
                         else
                         {
                             Console.WriteLine($"The quadrangle with sides {_firstSideQuadrangle}, {_secondSideQuadrangle}, {_thirdSideQuadrangle}, {_fourthSideQuadrangle} cannot exist");
@@ -141,12 +138,10 @@ namespace Module_2
 
                     case 3:
                         _isExistsQuadrangle = IsExistsQuadrangle(_firstSideQuadrangle, _secondSideQuadrangle, _thirdSideQuadrangle, _fourthSideQuadrangle);
-
                         if (_isExistsQuadrangle)
                         {
                             resultOperation = CalculateQuadranglePerimeter(_firstSideQuadrangle, _secondSideQuadrangle, _thirdSideQuadrangle, _fourthSideQuadrangle);
                         }
-
                         else
                         {
                             Console.WriteLine($"The quadrangle with sides {_firstSideQuadrangle}, {_secondSideQuadrangle}, {_thirdSideQuadrangle}, {_fourthSideQuadrangle} cannot exist");
@@ -165,7 +160,6 @@ namespace Module_2
         public double GetParameterFromPerimeter(double perimeter)
         {
             _firstSideQuadrangle = perimeter / 4;
-
             _secondSideQuadrangle = _thirdSideQuadrangle = _fourthSideQuadrangle = _firstSideQuadrangle;
 
             return Math.Round(_firstSideQuadrangle, 2);
@@ -174,7 +168,6 @@ namespace Module_2
         public double GetParameterFromSquare(double square)
         {
             _firstSideQuadrangle = Math.Pow(square, 0.5);
-
             _secondSideQuadrangle = _thirdSideQuadrangle = _fourthSideQuadrangle = _firstSideQuadrangle;
 
             return Math.Round(_firstSideQuadrangle, 2);

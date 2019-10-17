@@ -29,7 +29,6 @@ namespace Module_2
             {
                 return CalculateCircleSquare(_radius);
             }
-
             else 
             {
                 return CalculateCirclePerimeter(_radius);

@@ -30,13 +30,11 @@ namespace Module_2
 
             while (true)
             {
-
                 if ((double.TryParse(Console.ReadLine(), out _radius)) && (_radius > 0))
 
                 {
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data, repeat again please.");
@@ -54,7 +52,6 @@ namespace Module_2
                 {
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data, repeat again please.");
@@ -72,7 +69,6 @@ namespace Module_2
                 {
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data. repeat again please.");
@@ -90,7 +86,6 @@ namespace Module_2
                 {
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data, repeat again please.");
@@ -108,7 +103,6 @@ namespace Module_2
                 {
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data, repeat again please.");
@@ -126,7 +120,6 @@ namespace Module_2
                 {
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data, repeat again please.");
@@ -144,7 +137,6 @@ namespace Module_2
                 {
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data, repeat again please.");
@@ -162,7 +154,6 @@ namespace Module_2
                 {
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data, repeat again please.");
@@ -180,7 +171,6 @@ namespace Module_2
                 {
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid input data, repeat again please.");
@@ -238,7 +228,6 @@ namespace Module_2
             {
                 switch (formula)
                 {
-
                     case 1:
                         InputFirstSide();
                         InputSecondSide();
@@ -351,7 +340,6 @@ namespace Module_2
                 InputRadius();
                 circle = new Circle(_radius);
             }
-
             else if (operation == 2)
             {
                 InputRadius();
@@ -371,7 +359,6 @@ namespace Module_2
             switch (shape)
             {
                 case 1:
-
                     if (operation == 1)
                     {
                         _firstSide = triangle.GetParameterFromSquare(_result);
@@ -379,7 +366,6 @@ namespace Module_2
 
                         additionalShape = $"Triangle with side {_firstSide} and quadrangle with side {_secondSide} have the same area";
                     }
-
                     else if (operation == 2)
                     {
                         _firstSide = triangle.GetParameterFromPerimeter(_result);
@@ -391,16 +377,13 @@ namespace Module_2
                     break;
 
                 case 2:
-
                     if (operation == 1)
                     {
                         _radius = circle.GetParameterFromSquare(_result);
                         _secondSide = quadrangle.GetParameterFromSquare(_result);
 
-
                         additionalShape = $"Circle with radius {_radius} and quadrangle with side {_secondSide} have the same area";
                     }
-
                     else if (operation == 2)
                     {
                         _radius = circle.GetParameterFromPerimeter(_result);
@@ -412,7 +395,6 @@ namespace Module_2
                     break;
 
                 case 3:
-
                     if (operation == 1)
                     {
                         _radius = circle.GetParameterFromSquare(_result);
@@ -420,7 +402,6 @@ namespace Module_2
 
                         additionalShape = $"Circle with radius {_radius} and triangle with side {_firstSide} have the same area";
                     }
-
                     else if (operation == 2)
                     {
                         _radius = circle.GetParameterFromPerimeter(_result);
@@ -437,8 +418,6 @@ namespace Module_2
                               $"Datas: {txtFormula}. \n" +
                               $"{txtOperation} is {_result} \n" +
                               additionalShape);
-
         }
-
     }
 }

@@ -21,7 +21,6 @@ namespace module_2_task_3
                 change.Verify(Console.ReadLine(), ref _value2);                
 
                 change.Change(ref _value1, ref _value2);
-
                 change.Show(_value1, _value2);
 
                 Console.WriteLine();
