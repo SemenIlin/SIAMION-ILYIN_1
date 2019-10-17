@@ -4,51 +4,52 @@ namespace Module_2
 {
     class Program
     {
+
+
         static void Main(string[] args)
         {     
-            var dataCollection = new DataCollection();
+            var formulaSelection = new FormulaSelection();
+            var getDataFromUser = new GetDataFromUser();
 
             var circle = new Circle();
             var triangle = new Triangle();
             var quadrangle = new Quadrangle();
-
+            
             while (true)
             {
-                dataCollection.ChooseShape();
+                formulaSelection.ChooseShape();
 
                 Console.WriteLine();
 
-                dataCollection.ChooseOperation();
+                formulaSelection.ChooseOperation();
 
                 Console.WriteLine();
 
-                dataCollection.ChooseFormula(dataCollection.TypeShape, dataCollection.TypeOperation);
+                formulaSelection.ChooseFormula(formulaSelection.TypeShape, formulaSelection.TypeOperation);
 
-                switch (dataCollection.TypeShape)
+                switch (formulaSelection.TypeShape)
                 {
                     case 1:
+                        getDataFromUser.InputDataRadius(formulaSelection.TypeOperation,ref circle);
+                        getDataFromUser.Calculate(circle, formulaSelection.TypeOperation, formulaSelection.Formula);
 
-                        dataCollection.Data(circle);
-                        dataCollection.Calculate(circle);
-
-                        dataCollection.Show();
+                        getDataFromUser.Show(formulaSelection.TypeShape, formulaSelection.TypeOperation, formulaSelection.TxtShape, formulaSelection.TxtOperation, formulaSelection.TxtFormula, circle, triangle, quadrangle);
 
                         break;
 
                     case 2:
+                        getDataFromUser.InputDataTriangle(formulaSelection.TypeOperation, formulaSelection.Formula, ref triangle);
+                        getDataFromUser.Calculate(triangle, formulaSelection.TypeOperation, formulaSelection.Formula);
 
-                        dataCollection.Data(triangle);
-                        dataCollection.Calculate(triangle);
-
-                        dataCollection.Show();
+                        getDataFromUser.Show(formulaSelection.TypeShape, formulaSelection.TypeOperation, formulaSelection.TxtShape, formulaSelection.TxtOperation, formulaSelection.TxtFormula, circle, triangle, quadrangle);
 
                         break;
 
                     case 3:
-                        dataCollection.Data(quadrangle);
-                        dataCollection.Calculate(quadrangle);
+                        getDataFromUser.InputDataQuadrangle(formulaSelection.TypeOperation, formulaSelection.Formula,ref quadrangle);
+                        getDataFromUser.Calculate(quadrangle, formulaSelection.TypeOperation, formulaSelection.Formula);
 
-                        dataCollection.Show();
+                        getDataFromUser.Show(formulaSelection.TypeShape, formulaSelection.TypeOperation,formulaSelection.TxtShape, formulaSelection.TxtOperation, formulaSelection.TxtFormula, circle, triangle, quadrangle);
 
                         break;
                 }

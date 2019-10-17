@@ -4,7 +4,7 @@ namespace module_2_task_2
 {
     class Age
     {
-        private int _userAge = 0;
+        
         private string _answerString = "";        
 
         private string OutputErrorMessage(string data)
@@ -65,7 +65,7 @@ namespace module_2_task_2
             return "Incorrect data.";
         }
 
-        private void Verify(string data, ref int value)
+        public void Verify(string data, ref int value)
         {
             while ((!int.TryParse(data, out value)) || (value < 0))
             {
@@ -75,22 +75,7 @@ namespace module_2_task_2
 
                 data = Console.ReadLine();
             }
-        }
-        // Input data from user.
-        public void Input()
-        {
-            Console.WriteLine("Input age.");
-
-            Verify(Console.ReadLine(), ref _userAge);
-        }
-
-        public int UserAge
-        {
-            get
-            {
-                return _userAge;
-            }
-        }
+        } 
 
         // Output answer on query.
         public string GenerateAnswer(int age)

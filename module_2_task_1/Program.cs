@@ -12,25 +12,29 @@ namespace module_2_task_1
         {
             var taxation = new Taxation();
 
-            int countCompanies;
-            float tax;
+            var _countCompanies = 0;
+            var _tax = 0.0F;
+            var _totalFix = 0.0F;
 
             while (true)
             {
-                taxation.Input();
+                Console.WriteLine("Input count companies.");
+                taxation.Verify(Console.ReadLine(), ref _countCompanies);
 
-                countCompanies = taxation.Count;
-                tax = taxation.Tax;
+                Console.WriteLine("Input size tax in per cent.");
+                taxation.Verify(Console.ReadLine(), ref _tax);
 
-                taxation.CalculateTotalTax(countCompanies, tax);
+                _totalFix = taxation.CalculateTotalTax(_countCompanies, _tax);
 
-                taxation.Show();
+                taxation.Show(_totalFix);
 
                 Console.WriteLine();
                 Console.WriteLine("Continue press Enter, Exit press Esc. ");
 
                 if (Console.ReadKey().Key == ConsoleKey.Escape)
+                {
                     break;
+                }
 
                 Console.WriteLine();
             }

@@ -13,7 +13,5 @@ namespace Module_2
         double GetParameterFromPerimeter(double perimeter);
 
         double GetParameterFromSquare(double square);
-
-        void InputData(int operation = 1,int formula = 1);
     }
 }

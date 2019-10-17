@@ -6,22 +6,6 @@ namespace module_2_task_1
     {
         private const int _income = 500;
 
-        private int _countCompanies = 0;
-        private float _taxPerCent = 0.0F;
-        private float _totalFix = 0.0F;      
-
-        // Input data from user.
-        public void Input()
-        {
-            Console.WriteLine("Input count companies.");
-
-            Verify(Console.ReadLine(), ref _countCompanies);
-
-            Console.WriteLine("Input size tax in per cent.");
-
-            Verify(Console.ReadLine(), ref _taxPerCent);
-        }
-
         private string OutputErrorMessage(string data)
         {
             char [] tempArray = data.ToCharArray();
@@ -80,7 +64,7 @@ namespace module_2_task_1
             return "Incorrect data.";
         }    
 
-        private void Verify(string data, ref int value)
+        public void Verify(string data, ref int value)
         {
             while ((!int.TryParse(data, out value)) || (value < 0))
             {
@@ -92,7 +76,7 @@ namespace module_2_task_1
             }
         }
 
-        private void Verify(string data, ref float value)
+        public void Verify(string data, ref float value)
         {
 
             while ((!float.TryParse(data, out value)) || (value < 0) || (value > 100))
@@ -103,43 +87,15 @@ namespace module_2_task_1
                 data = Console.ReadLine();
             }
         }
-
-        // Count companies. 
-        public int Count
-        {
-            get
-            {
-                return _countCompanies;
-            }
-        }
-
-        // Tax is value per cent.
-        public float Tax
-        {
-            get
-            {
-                return _taxPerCent;
-            }
-        }
-
-        public float TotalTax
-        {
-            get
-            {
-                return _totalFix;
-            }
-        }
-
+        
         public float CalculateTotalTax(int countCompanies, float tax)
         {
-            _totalFix = (float)countCompanies * _income * tax / 100;
-
-            return _totalFix;
+            return (float)countCompanies * _income * tax / 100;
         }
         
-        public void Show()
+        public void Show(float totalFix)
         {
-            Console.WriteLine($"The total amount of tax = {_totalFix}.");
+            Console.WriteLine($"The total amount of tax = {totalFix}.");
         }
     }
 }

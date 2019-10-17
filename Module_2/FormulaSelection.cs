@@ -2,44 +2,23 @@
 
 namespace Module_2
 {
-    class DataCollection
+    class FormulaSelection
     {
         private string _txtShape;
         private string _txtOperation;
         private string _txtFormula;
 
-        // Data from method calculate(typeOperation, formula).
-        private double _result;
-
         private int _typeShape;
-
         private int _typeOperation;
+        private int _formula;
 
-        private int _formula; 
-        
-        public int TypeShape
-        {
-            get
-            {
-                return _typeShape;
-            }
-        }
-        
-        public int TypeOperation
-        {
-            get
-            {
-                return _typeOperation;
-            }
-        }
-        
-        public int Formula
-        {
-            get
-            {
-                return _formula;
-            }
-        }       
+        public int TypeShape { get { return _typeShape; }  }
+        public int TypeOperation { get { return _typeOperation; } }
+        public int Formula { get { return _formula; } }
+
+        public string TxtShape { get { return _txtShape; } }
+        public string TxtOperation { get { return _txtOperation; } }
+        public string TxtFormula { get { return _txtFormula;} }
 
         public void ChooseShape()
         {
@@ -87,7 +66,7 @@ namespace Module_2
                 }
             }
         }
-      
+        
         private void ChooseFormulaSquareForTriangle()
         {
             Console.WriteLine("Choose formula");
@@ -182,7 +161,6 @@ namespace Module_2
                 {
                     Console.WriteLine("Invalid input data. repeat again please.");
                 }
-
             }
 
             _txtOperation = "Perimeter";
@@ -330,7 +308,6 @@ namespace Module_2
             }
 
             _txtOperation = "Perimeter";
-
         }
 
         public void ChooseFormula(int shape, int operation)
@@ -338,7 +315,6 @@ namespace Module_2
             switch (shape)
             {
                 case 1:
-
                     if (operation == 1)
                     {
                         ChooseFormulaSquareForCircle();
@@ -354,7 +330,6 @@ namespace Module_2
                     break;
 
                 case 2:
-
                     if (operation == 1)
                     {
                         ChooseFormulaSquareForTriangle();
@@ -370,10 +345,9 @@ namespace Module_2
                     break;
 
                 case 3:
-
                     if (operation == 1)
                     {
-                        ChooseFormulaSquareForQuadrangle();
+                        ChooseFormulaSquareForQuadrangle();                        
                     }
 
                     else if (operation == 2)
@@ -390,101 +364,6 @@ namespace Module_2
 
                     break;
             }        
-        }
-
-        public void Data(ICalculate calculate)
-        {
-            calculate.InputData(_typeOperation, _formula);
-        }
-
-        public void Calculate(ICalculate calculate)
-        {
-            _result = calculate.Calculate(_typeOperation, _formula);
-        }
-
-        public void Show()
-        {
-            double radius;
-            double sideTriangle;
-            double sideQuadrangle;
-
-            var additionalShape = "";          
-
-            var circle = new Circle();
-            var triangle = new Triangle();
-            var quadrangle = new Quadrangle();
-
-            switch (_typeShape)
-            {
-                case 1:                    
-
-                    if (_typeOperation == 1)
-                    {
-                        sideTriangle = triangle.GetParameterFromSquare(_result);
-                        sideQuadrangle = quadrangle.GetParameterFromSquare(_result);
-
-                        additionalShape = $"Triangle with side {sideTriangle} and quadrangle with side {sideQuadrangle} have the same area";
-                    }
-                
-                    else if(_typeOperation == 2)
-                    {
-                        sideTriangle = triangle.GetParameterFromPerimeter(_result);
-                        sideQuadrangle = quadrangle.GetParameterFromPerimeter(_result);
-
-                        additionalShape = $"Triangle with side {sideTriangle} and quadrangle with side {sideQuadrangle} have the same perimeter";
-                    }                                        
-
-                    break;
-
-                case 2:
-                
-                    if (_typeOperation == 1)
-                    {
-                        radius = circle.GetParameterFromSquare(_result);
-                        sideQuadrangle = quadrangle.GetParameterFromSquare(_result);
-
-
-                        additionalShape = $"Circle with radius {radius} and quadrangle with side {sideQuadrangle} have the same area";
-                    }
-
-                    else if (_typeOperation == 2)
-                    {
-                        radius = circle.GetParameterFromPerimeter(_result);
-                        sideQuadrangle = quadrangle.GetParameterFromPerimeter(_result);
-
-                        additionalShape = $"Circle with radius {radius} and quadrangle with side {sideQuadrangle} have the same perimeter";
-                    }
-
-                    break;
-
-                case 3:
-                
-                    if (_typeOperation == 1)
-                    {
-                        radius = circle.GetParameterFromSquare(_result);
-                        sideTriangle = triangle.GetParameterFromSquare(_result);
-
-                        additionalShape = $"Circle with radius {radius} and triangle with side {sideTriangle} have the same area";
-                    }
-
-                    else if (_typeOperation == 2)
-                    {
-                        radius = circle.GetParameterFromPerimeter(_result);
-                        sideTriangle = triangle.GetParameterFromPerimeter(_result);
-
-                        additionalShape = $"Circle with radius {radius} and triangle with side {sideTriangle} have the same perimeter";
-                    }
-
-                    break;
-            }
-
-            Console.WriteLine($"Shape: {_txtShape}.\n" +
-                              $"Operation: {_txtOperation}.\n" +
-                              $"Datas: {_txtFormula}. \n" +
-                              $"{_txtOperation} is {_result} \n"+
-                              additionalShape);
-
-        }
-        
+        }         
     }
 }

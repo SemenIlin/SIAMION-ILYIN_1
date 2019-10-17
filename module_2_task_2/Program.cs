@@ -8,16 +8,15 @@ namespace module_2_task_2
         {
             var age = new Age();
 
-            int userAge;
+            var _userAge = 0;
 
             while (true)
             {
 
-                age.Input();
+                Console.WriteLine("Input age.");
+                age.Verify(Console.ReadLine(), ref _userAge);                
 
-                userAge = age.UserAge;
-
-                age.GenerateAnswer(userAge);
+                age.GenerateAnswer(_userAge);
 
                 age.Show();
 
@@ -25,7 +24,9 @@ namespace module_2_task_2
                 Console.WriteLine("Continue press Enter, Exit press Esc.");
 
                 if (Console.ReadKey().Key == ConsoleKey.Escape)
+                {
                     break;
+                }
 
                 Console.WriteLine();
             }
