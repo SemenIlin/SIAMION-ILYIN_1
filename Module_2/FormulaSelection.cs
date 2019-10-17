@@ -125,7 +125,6 @@ namespace Module_2
 
             while (true)
             {
-
                 Console.WriteLine();
                 Console.WriteLine("All sides are known input 1. \n" +
                                   "Two sides and angle between are known input 2. \n" +
@@ -136,19 +135,16 @@ namespace Module_2
                     switch (_formula)
                     {
                         case 1:
-
                             _txtFormula = "All sides are known";
 
                             break;
 
                         case 2:
-
                             _txtFormula = "Two sides and angle between are known";
 
                             break;
 
                         case 3:
-
                             _txtFormula = "Two angles and side around them are known";
 
                             break;
@@ -172,7 +168,6 @@ namespace Module_2
 
             while (true)
             {
-
                 Console.WriteLine();
                 Console.WriteLine("Radius is known input 1.");
 
@@ -237,19 +232,16 @@ namespace Module_2
                     switch (_formula)
                     {
                         case 1:
-
                             _txtFormula = "One side is known";
 
                             break;
 
                         case 2:
-
                             _txtFormula = "Height and width are known";
 
                             break;
 
                         case 3:
-
                             _txtFormula = "All sides are known";
 
                             break;
@@ -283,19 +275,16 @@ namespace Module_2
                     switch (_formula)
                     {
                         case 1:
-
                             _txtFormula = "One side is known";
 
                             break;
 
                         case 2:
-
                             _txtFormula = "Height and width are known";
 
                             break;
 
                         case 3:
-
                             _txtFormula = "All sides are known";
                             break;
                     }

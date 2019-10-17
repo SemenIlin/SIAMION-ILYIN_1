@@ -20,7 +20,6 @@ namespace module_2_task_3
 
         public void Verify(string data, ref float value)
         {
-
             while (!float.TryParse(data, out value))
             {
                 Console.WriteLine("Invalid data. May be data include later or '.' in place ','. ");

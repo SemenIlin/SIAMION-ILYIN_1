@@ -4,7 +4,6 @@ namespace module_2_task_2
 {
     class Age
     {
-        
         private string _answerString = "";        
 
         private string OutputErrorMessage(string data)
