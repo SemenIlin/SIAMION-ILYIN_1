@@ -6,32 +6,21 @@ namespace Module_3
     {
         static void Main(string[] args)
         {
-            var vortexArray = new VortexArray();
+            Console.WriteLine("The program for create vortex array.");          
+            Console.WriteLine("Input length array.");
 
-            int _lengthArray = 0;
-            int[,] _array;
+            var length = Console.ReadLine();
+            var vortexArray = new VortexArray(length);   
+            var array = vortexArray.CreateVortexArray();
 
-            Console.WriteLine("The program for create vortex array.");
-            while (true)
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                Console.WriteLine("Input length array.");
-                vortexArray.Verify(Console.ReadLine(), ref _lengthArray);
-                while (_lengthArray < 0)
+                for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    Console.WriteLine("The value must be greater than 0 ");
-                    vortexArray.Verify(Console.ReadLine(), ref _lengthArray);
+                    Console.Write("{0,5}", array[i, j]);
                 }
 
-                _array = vortexArray.CreateVortexArray(_lengthArray);
-                vortexArray.Show(_array);
-                
-                Console.WriteLine("\n");
-                Console.WriteLine("Continue press Enter, Exit press Esc.");
-
-                if (Console.ReadKey().Key == ConsoleKey.Escape)
-                {
-                    break;
-                }
+                Console.WriteLine();
             }
 
             Console.WriteLine("\n");
@@ -62,7 +51,7 @@ namespace Module_3
                 }
             }
 
-            Console.WriteLine($"Answer {_leftValue}.");
+            Console.WriteLine($"Answer {(_leftValue+_rightValue) / 2}.");
 
             Console.ReadKey();
         }

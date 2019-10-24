@@ -3,17 +3,25 @@
 namespace Module_3
 {
     class VortexArray
-    {
-        private const string format = "{0,5}";
+    {        
+        readonly string _textLength;
+        private int _length;
 
-        public int[,] CreateVortexArray(int value)
+        public VortexArray(string length)
         {
-            int[,] vortexArray = new int[value, value];
+            _textLength = length;
+        }
+
+
+        public int[,] CreateVortexArray()
+        {
+            Verify(_textLength, out _length);
+            int[,] vortexArray = new int[_length, _length];
 
             var left = 0;
             var top = 0;
-            var right = value - 1;
-            var bottom = value - 1;
+            var right = _length - 1;
+            var bottom = _length - 1;
             var valueArray = 1;
 
             while (true)
@@ -46,31 +54,18 @@ namespace Module_3
                 }
 
                 left++;
-                if(value * value == valueArray - 1)
+                if(_length * _length == valueArray - 1)
                 {
                     break;
                 }
             }
 
             return vortexArray;
-        }
+        }        
 
-        public void Show(int[,] array)
+        private void Verify(string data, out int value)
         {
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    Console.Write(format, array[i, j]);
-                }
-
-                Console.WriteLine();
-            }
-        }
-
-        public void Verify(string data, ref int value)
-        {
-            while (!int.TryParse(data, out value))
+            while (!int.TryParse(data, out value) || (value < 0))
             {
                 Console.WriteLine("Input value again.");
                 data = Console.ReadLine();

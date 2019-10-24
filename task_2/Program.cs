@@ -6,29 +6,21 @@ namespace task_2
     {
         static void Main(string[] args)
         {
-            var operation = new Operation();
-
-            var _value = 0;
             Console.WriteLine("The program to output a series of natural even numbers.");
 
-            while (true)
+            Console.WriteLine();
+            Console.WriteLine("Input value.");
+            var count = Console.ReadLine();
+
+            var operation = new EvenNumbers(count);
+            var data = operation.GetNumbersFibonacci();
+
+            foreach (var item in data)
             {
-                Console.WriteLine();
-
-                Console.WriteLine("Input value.");
-                operation.Verify(Console.ReadLine(), ref _value);
-                operation.Show(_value);
-
-                Console.WriteLine();
-                Console.WriteLine("Continue press Enter, Exit press Esc.");
-
-                if (Console.ReadKey().Key == ConsoleKey.Escape)
-                {
-                    break;
-                }
-
-                Console.WriteLine();
+                Console.Write($"{item} ");            
             }
+
+            Console.ReadLine();
         }
     }
 }

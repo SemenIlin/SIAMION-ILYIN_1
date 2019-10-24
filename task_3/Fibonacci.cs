@@ -5,7 +5,15 @@ namespace task_3
 {
     class Fibonacci
     {
-        public void Verify(string data, ref int value)
+        readonly string _textCount;
+        private int _count;
+
+        public Fibonacci(string count)
+        {
+            _textCount = count;        
+        }
+
+        private void Verify(string data, out int value)
         {
             while ((!int.TryParse(data, out value)) || (value <= 0))
             {
@@ -16,14 +24,15 @@ namespace task_3
         }
 
         // For very long series Fibonacci(140).
-        public List<decimal> GetRowFibonacci(int countValue)
+        public List<decimal> GetRowFibonacci()
         {
+            Verify(_textCount, out _count);
             List<decimal> numbersFibonacci = new List<decimal>();
-            if (countValue == 1)
+            if (_count == 1)
             {
                 numbersFibonacci.Add(0);
             }
-            else if (countValue == 2)
+            else if (_count == 2)
             {
                 numbersFibonacci.Add(0);
                 numbersFibonacci.Add(1);
@@ -34,7 +43,7 @@ namespace task_3
                 numbersFibonacci.Add(0);
                 numbersFibonacci.Add(1);
 
-                for (int index = 2; index < countValue; index++)
+                for (int index = 2; index < _count; index++)
                 {
                     tempValue = numbersFibonacci[index - 1] + numbersFibonacci[index - 2];
                     numbersFibonacci.Add(tempValue);
@@ -42,15 +51,6 @@ namespace task_3
             }
 
             return numbersFibonacci;
-        }
-
-        public void Show(List<decimal> rowFibonacci)
-        {
-            Console.WriteLine($"Fibonacci series of {rowFibonacci.Count} elements.");
-            foreach (var value in rowFibonacci)
-            {
-                Console.Write($"{value} ");
-            }
         }
     }
 }

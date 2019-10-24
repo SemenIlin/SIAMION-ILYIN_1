@@ -7,40 +7,30 @@ namespace task_3
     {
         static void Main(string[] args)
         {
-            var fibonacci = new Fibonacci();
-
-            var _value = 0;
             var rowFibonacci = new List<decimal>();
 
             Console.WriteLine("The program output Fibonacci series. Maximum 140.");
 
-            while (true)
+            Console.WriteLine("Input value.");
+            try
             {
-                Console.WriteLine();
+                var count = Console.ReadLine();
 
-                Console.WriteLine("Input value.");
-                try
+                var fibonacci = new Fibonacci(count);
+                rowFibonacci = fibonacci.GetRowFibonacci();
+
+                Console.WriteLine($"Fibonacci series of {rowFibonacci.Count} elements.");
+                foreach (var value in rowFibonacci)
                 {
-                    fibonacci.Verify(Console.ReadLine(), ref _value);
-                    rowFibonacci = fibonacci.GetRowFibonacci(_value);
-                    fibonacci.Show(rowFibonacci);
-
-                    Console.WriteLine();
-                    Console.WriteLine("Continue press Enter, Exit press Esc.");
-
-                    if (Console.ReadKey().Key == ConsoleKey.Escape)
-                    {
-                        break;
-                    }
-
-                    Console.WriteLine();
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception.Message);
-                }
-            
+                    Console.Write($"{value} ");
+                }               
             }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+
+            Console.ReadLine();
         }
     }
 }
