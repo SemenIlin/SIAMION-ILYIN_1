@@ -7,15 +7,13 @@ namespace task_5
     {
         static void Main(string[] args)
         {
-            var choiceOperationAndMonth = new ChoiceOperationAndMonth();
-
             NumberStyles style = NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign;
             CultureInfo culture = CultureInfo.CreateSpecificCulture("en-GB");
 
             double _value1;
             double _value2;
             int _choice;
-            ChoiceOperationAndMonth.Operation operation;
+            TypeOperation.Operation operation;
 
             Console.WriteLine("Choose operation: \n" +
                               "Add input 1.\n" +
@@ -25,15 +23,21 @@ namespace task_5
 
             if ((int.TryParse(Console.ReadLine(), out _choice)) && (_choice > 0) && (_choice < 5))
             {
-                operation = (ChoiceOperationAndMonth.Operation)_choice;
+                operation = (TypeOperation.Operation)_choice;
 
                 Console.WriteLine("Input first value.");
                 _value1 = double.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out double dataFromUser1) ? dataFromUser1 : 0;
                 Console.WriteLine("Input second value.");
                 _value2 = double.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out double dataFromUser2) ? dataFromUser2 : 0;
-
-                double result = ChoiceOperationAndMonth.MathOperation(_value1, _value2, operation);
-                Console.WriteLine($"Result is {result}.");
+                try
+                {
+                    double result = TypeOperation.MathOperation(_value1, _value2, operation);
+                    Console.WriteLine($"Result is {result}.");
+                }
+                catch(Exception exception) 
+                {
+                    Console.WriteLine(exception.Message);                
+                }
             }
             else 
             {
@@ -41,7 +45,7 @@ namespace task_5
             }
 
             Console.WriteLine();
-            ChoiceOperationAndMonth.Month month;
+            Date.Month month;
             int _year;
             int _choiceMonth;
 
@@ -61,12 +65,19 @@ namespace task_5
 
             if ((int.TryParse(Console.ReadLine(), out _choiceMonth)) && (_choiceMonth > 0) && (_choiceMonth < 13))
             {
-                month = (ChoiceOperationAndMonth.Month)_choiceMonth;
+                month = (Date.Month)_choiceMonth;
 
                 Console.WriteLine("\nInput year");
-                _year = int.TryParse(Console.ReadLine(), out var dataFromUser4) ? dataFromUser4 : 0;
+                try
+                {
+                    _year = int.TryParse(Console.ReadLine(), out var dataFromUser4) ? dataFromUser4 : 0;
 
-                Console.WriteLine($"Result is {choiceOperationAndMonth.GetDays(month, _year)}.");
+                    Console.WriteLine($"Result is {Date.DaysInMonth(_year, month)}.");
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.Message);
+                }
             }
             else
             {

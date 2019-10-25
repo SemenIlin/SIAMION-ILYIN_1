@@ -1,7 +1,8 @@
-﻿
+﻿using System;
+using System.Linq;
 namespace task_7
 {
-    class Array
+    static class OperationWithArray
     {
         public enum Direction 
         {
@@ -9,7 +10,7 @@ namespace task_7
             Increase
         }
 
-        private int[] SortDecrease(int[] array)
+        private static int[] SortDecrease(int[] array)
         {
             int _temporary;
             for (int index = 0; index < array.Length; index++)
@@ -28,7 +29,7 @@ namespace task_7
             return array;
         }
 
-        private int[] SortIncrease(int[] array)
+        private static int[] SortIncrease(int[] array)
         {
             int _temporary;
             for (int index = 0; index < array.Length; index++)
@@ -47,7 +48,7 @@ namespace task_7
             return array;
         }
 
-        public int[] Sort(Direction direction, int[] array)
+        public static int[] Sort(this int[] array,Direction direction)
         {
             switch (direction)
             {
@@ -58,7 +59,26 @@ namespace task_7
                     SortIncrease(array);
                     break;
                 default:
-                    SortDecrease(array);
+                    SortIncrease(array);
+                    break;
+            }
+
+            return array;
+        }
+
+        public static int[] SortUsingFunc(this int[] array, Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.Decrease:
+                    Array.Sort(array);
+                    Array.Reverse(array);
+                    break;
+                case Direction.Increase:
+                    Array.Sort(array);
+                    break;
+                default:
+                    Array.Sort(array);
                     break;
             }
 

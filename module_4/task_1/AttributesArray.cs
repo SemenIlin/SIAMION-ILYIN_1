@@ -1,8 +1,10 @@
-﻿namespace task_1
+﻿using System.Linq;
+
+namespace task_1
 {
-    class AttributesArray
+    static class AttributesArray
     {
-        public int MaxElement(int[] array)
+        public static int MaxElement(this int[] array)
         {
             int maxValue = array[0];
             for (int index = 1; index < array.Length; index++)
@@ -16,21 +18,12 @@
             return maxValue;
         }
 
-        public double MaxElement(double[] array)
+        public static int MaxElementUsingFunc(this int[] array)
         {
-            double maxValue = array[0];
-            for (int index = 1; index < array.Length; index++)
-            {
-                if (array[index] > maxValue)
-                {
-                    maxValue = array[index];
-                }
-            }
-
-            return maxValue;
+            return array.Max();
         }
 
-        public int MinElement(int[] array)
+        public static int MinElement(int[] array)
         {
             int minValue = array[0];
             for (int index = 1; index < array.Length; index++)
@@ -44,21 +37,12 @@
             return minValue;
         }
 
-        public double MinElement(double[] array)
+        public static int MinElementUsingFunc(this int[] array)
         {
-            double minValue = array[0];
-            for (int index = 1; index < array.Length; index++)
-            {
-                if (array[index] < minValue)
-                {
-                    minValue = array[index];
-                }
-            }
-
-            return minValue;
+            return array.Min();        
         }
 
-        public int Sum(int[] array)
+        public static int Sum(this int[] array)
         {
             int sum = 0;
             for (int index = 0; index < array.Length; index++)
@@ -69,56 +53,23 @@
             return sum;
         }
 
-        public double Sum(double[] array)
+        public static int SumUsingFunc(this int[] array)
         {
-            double sum = 0;
-            for (int index = 0; index < array.Length; index++)
-            {
-                sum += array[index];
-            }
-
-            return sum;
+            return array.Sum();
         }
 
-        public int DifferenceBetweenMaxAndMin(int[] array)
+        public static int DifferenceBetweenMaxAndMin(this int[] array)
         {
             int max = MaxElement(array);
             int min = MinElement(array);
 
             return max - min;
-        }
+        }        
 
-        public double DifferenceBetweenMaxAndMin(double[] array)
-        {
-            double min = MinElement(array);
-            double max = MaxElement(array);
-
-            return max - min;
-        }
-
-        public int[] CreateNewArray(int[] array)
+        public static int[] CreateNewArray(this int[] array)
         {
             int maxElement = MaxElement(array);
             int minElement = MinElement(array);
-            for (int index = 0; index < array.Length; index++)
-            {
-                if (index % 2 == 0)
-                {
-                    array[index] += maxElement;
-                }
-                else
-                {
-                    array[index] -= minElement;
-                }
-            }
-
-            return array;
-        }
-
-        public double[] CreateNewArray(double[] array)
-        {
-            double maxElement = MaxElement(array);
-            double minElement = MinElement(array);
             for (int index = 0; index < array.Length; index++)
             {
                 if (index % 2 == 0)

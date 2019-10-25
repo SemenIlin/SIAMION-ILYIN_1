@@ -6,7 +6,6 @@ namespace task_1
     {
         static void Main(string[] args)
         {
-            AttributesArray attributesArray = new AttributesArray();
             Random random = new Random();
 
             int _length;
@@ -30,18 +29,24 @@ namespace task_1
                 Console.Write($"{item} ");
             }
 
-            _min = attributesArray.MinElement(_array);
-            _max = attributesArray.MaxElement(_array);
-            _sum = attributesArray.Sum(_array);
-            _difference = attributesArray.DifferenceBetweenMaxAndMin(_array);
+            _min = _array.MaxElement();
+            _max = _array.MaxElement();
+            _sum = _array.Sum();
+            int _min1 = _array.MinElementUsingFunc();
+            int _max1 = _array.MaxElementUsingFunc();
+            int _sum1 = _array.SumUsingFunc();
+            _difference = _array.DifferenceBetweenMaxAndMin();
 
             Console.WriteLine();
             Console.WriteLine($"Min element is {_min}");
+            Console.WriteLine($"Min element is {_min1} (UsingFunc)");
             Console.WriteLine($"Max element is {_max}");
+            Console.WriteLine($"Max element is {_max1} (UsingFunc)");
             Console.WriteLine($"Summa is {_sum}");
+            Console.WriteLine($"Summa is {_sum1} (UsingFunc)");
             Console.WriteLine($"Difference is {_difference}");
 
-            _array = attributesArray.CreateNewArray(_array);
+            _array = _array.CreateNewArray();
             foreach (var item in _array)
             {
                 Console.Write($"{item} ");

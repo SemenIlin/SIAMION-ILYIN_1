@@ -7,7 +7,6 @@ namespace task_6
         static void Main(string[] args)
         {
             Random random = new Random();
-            Array array = new Array();
 
             int _length;
             int[] _array;
@@ -26,7 +25,7 @@ namespace task_6
                     Console.Write($"{item} ");
                 }
 
-                array.IncreaseValuesOfArray(_array);
+                _array.IncreaseValuesOfArray();
                 Console.WriteLine();
                 foreach (var item in _array)
                 {

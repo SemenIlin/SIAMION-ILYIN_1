@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 
 namespace task_3
 {
     class RefAndOut
     {
-        public void VerifyRadius(string data,NumberStyles style,CultureInfo culture, out double value)
+        public void VerifyRadius(string data, NumberStyles style, CultureInfo culture, out double value)
         {
             while ((!double.TryParse(data, style, culture, out value)) || (value < 0))
             {
                 Console.WriteLine("Input value again.");
 
-                data = Console.ReadLine().Replace(',','.');
+                data = Console.ReadLine().Replace(',', '.');
             }
         }
 
@@ -52,7 +53,14 @@ namespace task_3
             for (int index = 0; index < array.Length; index++)
             {
                 sum += array[index];
-            }        
+            }
+        }
+
+        public void GetMinMaxAndSumUsingFunc(int[] array, out int min, out int max, out int sum)
+        {
+            min = array.Min();
+            max = array.Max();
+            sum = array.Sum();
         }
     }
 }

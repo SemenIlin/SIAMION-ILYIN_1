@@ -68,7 +68,9 @@ namespace task_3
 
                             Console.WriteLine();
                             refAndOut.GetMinMaxAndSum(_array, out _min, out _max, out _sum);
+                            refAndOut.GetMinMaxAndSumUsingFunc(_array, out int _min1, out int _max1, out int _sum1);
                             Console.WriteLine($"min = {_min}, max = {_max}, sum = {_sum}");
+                            Console.WriteLine($"min = {_min1}, max = {_max1}, sum = {_sum1}");
                         }
                     }
                     catch (Exception exception)
