@@ -1,11 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace task_2
 {
     class Summation
     {
+        public void VerifyLength(string data, out int value)
+        {
+            while ((!int.TryParse(data, out value)) || (value < 0))
+            {
+                Console.WriteLine("Input value again.");
+
+                data = Console.ReadLine();
+            }
+        }
+
         public int Sum(int value1, int value2, int value3) => value1 + value2 + value3;
 
         public int Sum(int value1, int value2) => value1 + value2;
@@ -53,14 +61,6 @@ namespace task_2
             }
 
             return result;
-        }
-
-        public void Show<T>(T[] array)
-        {
-            foreach (var item in array)
-            {
-                Console.Write($"{item} ");
-            }
-        }      
+        }    
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace task_7
 {
     class Array
@@ -66,14 +63,6 @@ namespace task_7
             }
 
             return array;
-        }
-
-        public void Show<T>(T[] array)
-        {
-            foreach (var value in array)
-            {
-                Console.Write($"{value} ");
-            }
         }
     }
 }

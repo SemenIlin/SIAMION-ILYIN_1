@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace task_1
+﻿namespace task_1
 {
-    class Operations
+    class AttributesArray
     {
         public int MaxElement(int[] array)
         {
@@ -134,14 +132,6 @@ namespace task_1
             }
 
             return array;
-        }
-
-        public void Show<T>(T[] array)
-        {
-            foreach (var item in array)
-            {
-                Console.Write($"{item} ");
-            }
         }
     }
 }

@@ -6,7 +6,7 @@ namespace task_1
     {
         static void Main(string[] args)
         {
-            Operations operation = new Operations();
+            AttributesArray attributesArray = new AttributesArray();
             Random random = new Random();
 
             int _length;
@@ -17,7 +17,7 @@ namespace task_1
             int[] _array;
 
             Console.WriteLine("Input length of array.");
-            _length = int.TryParse(Console.ReadLine(), out int dataFromUser) ? dataFromUser : 0;
+            _length = int.TryParse(Console.ReadLine(), out int dataFromUser) ? (dataFromUser < 0 ? Math.Abs(dataFromUser) : dataFromUser) : 0;
             _array = new int[_length];
 
             for (int index = 0; index < _array.Length; index++)
@@ -25,11 +25,15 @@ namespace task_1
                 _array[index] = random.Next(-12, 34);            
             }
 
-            operation.Show<int>(_array);
-            _min = operation.MinElement(_array);
-            _max = operation.MaxElement(_array);
-            _sum = operation.Sum(_array);
-            _difference = operation.DifferenceBetweenMaxAndMin(_array);
+            foreach (var item in _array)
+            {
+                Console.Write($"{item} ");
+            }
+
+            _min = attributesArray.MinElement(_array);
+            _max = attributesArray.MaxElement(_array);
+            _sum = attributesArray.Sum(_array);
+            _difference = attributesArray.DifferenceBetweenMaxAndMin(_array);
 
             Console.WriteLine();
             Console.WriteLine($"Min element is {_min}");
@@ -37,8 +41,11 @@ namespace task_1
             Console.WriteLine($"Summa is {_sum}");
             Console.WriteLine($"Difference is {_difference}");
 
-            _array = operation.CreateNewArray(_array);
-            operation.Show<int>(_array);
+            _array = attributesArray.CreateNewArray(_array);
+            foreach (var item in _array)
+            {
+                Console.Write($"{item} ");
+            }
 
             Console.ReadLine();
         }

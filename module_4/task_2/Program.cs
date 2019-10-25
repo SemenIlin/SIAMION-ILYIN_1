@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace task_2
 {
@@ -8,6 +9,9 @@ namespace task_2
         {
             Summation summation = new Summation();
             Random random = new Random();
+
+            NumberStyles style =  NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign;
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-GB");
 
             int _length;
             int[] _array;
@@ -49,13 +53,13 @@ namespace task_2
                     _sum = summation.Sum(_value1, _value2);
                     Console.WriteLine($"Result is {_sum}.");
                     break;
-                case 3:
+                case 3:      
                     Console.WriteLine("Input value.");
-                    double _value4 = double.TryParse(Console.ReadLine().Replace('.',','), out double dataFromUser4) ? dataFromUser4 : 0;
+                    double _value4 = double.TryParse(Console.ReadLine().Replace(',','.'), style, culture, out double dataFromUser4) ? dataFromUser4 : 0;
                     Console.WriteLine("Input value.");
-                    double _value5 = double.TryParse(Console.ReadLine().Replace('.', ','), out double dataFromUser5) ? dataFromUser5 : 0;
+                    double _value5 = double.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out double dataFromUser5) ? dataFromUser5 : 0;
                     Console.WriteLine("Input value.");
-                    double _value6 = double.TryParse(Console.ReadLine().Replace('.', ','), out double dataFromUser6) ? dataFromUser6 : 0;
+                    double _value6 = double.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out double dataFromUser6) ? dataFromUser6 : 0;
 
                     double _result1 = summation.Sum(_value4, _value5, _value6);
                     Console.WriteLine($"Result is {_result1}.");
@@ -71,31 +75,39 @@ namespace task_2
                     break;
                 case 5:
                     Console.WriteLine("Input length of first array.");
-                    _length = int.TryParse(Console.ReadLine(), out int dataFromUser7) ? dataFromUser7 : 0;
-                    _array = new int[_length];
 
+                    summation.VerifyLength(Console.ReadLine(), out _length);
+                    _array = new int[_length];
                     for(int index = 0; index < _array.Length; index++)
                     {
                         _array[index] = random.Next(-23, 32);
                     }
 
-                    summation.Show<int>(_array);
+                    foreach (var item in _array)
+                    {
+                        Console.Write($"{item} ");
+                    }
                     Console.WriteLine();
 
                     Console.WriteLine("Input length of second array.");
-                    _length1 = int.TryParse(Console.ReadLine(), out int dataFromUser8) ? dataFromUser8 : 0;
+                    summation.VerifyLength(Console.ReadLine(), out _length1);
                     _array1 = new int[_length1];
-
                     for (int index = 0; index < _array1.Length; index++)
                     {
                         _array1[index] = random.Next(-65, 12);
                     }
 
-                    summation.Show<int>(_array1);
+                    foreach (var item in _array1)
+                    {
+                        Console.Write($"{item} ");
+                    }
                     Console.WriteLine("\n");
 
                     int[] resultArray = summation.SumArray(_array, _array1);
-                    summation.Show<int>(resultArray);
+                    foreach (var item in resultArray)
+                    {
+                        Console.Write($"{item} ");
+                    }
                     break;
                 default:
                     Console.WriteLine("Input value.");

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace task_3
 {
@@ -8,6 +9,8 @@ namespace task_3
         {
             RefAndOut refAndOut = new RefAndOut();
             Random random = new Random();
+            NumberStyles style = NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign;
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-GB");
 
             int _length;
             int[] _array;
@@ -17,6 +20,7 @@ namespace task_3
             double _value1;
             double _value2;
             double _value3;
+            double _radius;
             double _perimeter;
             double _square;
 
@@ -30,43 +34,55 @@ namespace task_3
             {
                 case 1:
                     Console.WriteLine("Input value.");
-                    _value1 = double.TryParse(Console.ReadLine().Replace('.',','), out double dataFromUser1) ? dataFromUser1 : 0;
+                    _value1 = double.TryParse(Console.ReadLine().Replace(',','.'), style, culture, out double dataFromUser1) ? dataFromUser1 : 0;
                     Console.WriteLine("Input value.");
-                    _value2 = double.TryParse(Console.ReadLine().Replace('.', ','), out double dataFromUser2) ? dataFromUser2 : 0;
+                    _value2 = double.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out double dataFromUser2) ? dataFromUser2 : 0;
                     Console.WriteLine("Input value.");
-                    _value3 = double.TryParse(Console.ReadLine().Replace('.', ','), out double dataFromUser3) ? dataFromUser3 : 0;
+                    _value3 = double.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out double dataFromUser3) ? dataFromUser3 : 0;
 
                     refAndOut.IncreaseNumbers(ref _value1, ref _value2, ref _value3);
                     Console.WriteLine($"value1 = {_value1}, value2 = {_value2}, value3 = {_value3}");
                     break;
                 case 2:
                     Console.WriteLine("Input radius.");
-                    double _radius = double.TryParse(Console.ReadLine().Replace('.', ','), out double dataFromUser4) ? dataFromUser4 : 0;
+                    refAndOut.VerifyRadius(Console.ReadLine().Replace(',', '.'), style, culture, out _radius);
                     refAndOut.GetLengthAndSquareCircle(_radius,out _perimeter, out _square);
                     Console.WriteLine($"length = {_perimeter}, square = {_square}");
                     break;
                 case 3:
                     Console.WriteLine("Input length of array");
-                    _length = int.TryParse(Console.ReadLine(), out int dataFromuser5) ? dataFromuser5 : 0;
-                    _array = new int[_length];
-
-                    for (int index = 0; index < _array.Length; index++)
+                    try
                     {
-                        _array[index] = random.Next(-54, 36);                    
-                    }
+                        if (int.TryParse(Console.ReadLine(), out _length))
+                        {
+                            _array = new int[_length];
+                            for (int index = 0; index < _array.Length; index++)
+                            {
+                                _array[index] = random.Next(-54, 36);
+                            }
 
-                    refAndOut.Show<int>(_array);
-                    Console.WriteLine();
-                    refAndOut.GetMinMaxAndSum(_array, out _min, out _max, out _sum);
-                    Console.WriteLine($"min = {_min}, max = {_max}, sum = {_sum}");
+                            foreach (var item in _array)
+                            {
+                                Console.Write($"{item} ");
+                            }
+
+                            Console.WriteLine();
+                            refAndOut.GetMinMaxAndSum(_array, out _min, out _max, out _sum);
+                            Console.WriteLine($"min = {_min}, max = {_max}, sum = {_sum}");
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        Console.WriteLine(exception.Message);                    
+                    }
                     break;
                 default:
                     Console.WriteLine("Input value.");
-                    _value1 = double.TryParse(Console.ReadLine(), out dataFromUser1) ? dataFromUser1 : 0;
+                    _value1 = double.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out dataFromUser1) ? dataFromUser1 : 0;
                     Console.WriteLine("Input value.");
-                    _value2 = double.TryParse(Console.ReadLine(), out dataFromUser2) ? dataFromUser2 : 0;
+                    _value2 = double.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out dataFromUser2) ? dataFromUser2 : 0;
                     Console.WriteLine("Input value.");
-                    _value3 = double.TryParse(Console.ReadLine(), out dataFromUser3) ? dataFromUser3 : 0;
+                    _value3 = double.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out dataFromUser3) ? dataFromUser3 : 0;
 
                     refAndOut.IncreaseNumbers(ref _value1, ref _value2, ref _value3);
                     Console.WriteLine($"value1 = {_value1}, value2 = {_value2}, value3 = {_value3}");

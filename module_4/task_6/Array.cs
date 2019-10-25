@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace task_6
 {
     class Array
@@ -13,24 +12,5 @@ namespace task_6
 
             return array;
         }
-
-        public double[] IncreaseValuesOfArray(double[] array)
-        {
-            for (int index = 0; index < array.Length; index++)
-            {
-                array[index] += 5.0;
-            }
-
-            return array;
-        }
-
-        public void Show<T>(T[] array)
-        {
-            foreach (var value in array)
-            {
-                Console.Write($"{value} ");            
-            }
-        }
-
     }
 }

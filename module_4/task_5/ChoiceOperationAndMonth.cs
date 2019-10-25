@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace task_5
 {
-    class Enum
+    class ChoiceOperationAndMonth
     {
         public enum Operation
         {
@@ -12,7 +10,7 @@ namespace task_5
             Subtract,
             Multiply,
             Divide
-        }
+        }        
 
         public enum Month
         {
@@ -30,7 +28,7 @@ namespace task_5
             December        
         }
 
-        public static double MathOp(double x, double y, Operation op)
+        public static double MathOperation(double x, double y, Operation op)
         {
             double result = 0.0;
 
@@ -46,16 +44,23 @@ namespace task_5
                     result = x * y;
                     break;
                 case Operation.Divide:
-                    result = x / y;
+                    try
+                    {
+                        if(y == 0)
+                        {
+                            throw new DivideByZeroException();
+                        }
+
+                        result = x / y;
+                    }
+                    catch(Exception exception) 
+                    {
+                        Console.WriteLine(exception.Message);                    
+                    }
                     break;
             }
 
             return Math.Round(result, 2);
-        }
-
-        public void Show(double value)
-        {
-            Console.WriteLine($"Result is {value}.");
         }
 
         public int GetDays(Month month, int year)

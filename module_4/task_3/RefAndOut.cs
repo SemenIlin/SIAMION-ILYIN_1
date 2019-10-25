@@ -1,14 +1,18 @@
 ﻿using System;
-    
+using System.Globalization;
+
 namespace task_3
 {
     class RefAndOut
     {
-        public void IncreaseNumbers(ref int value1, ref int value2, ref int value3)
+        public void VerifyRadius(string data,NumberStyles style,CultureInfo culture, out double value)
         {
-            value1 += 10;
-            value2 += 10;
-            value3 += 10;
+            while ((!double.TryParse(data, style, culture, out value)) || (value < 0))
+            {
+                Console.WriteLine("Input value again.");
+
+                data = Console.ReadLine().Replace(',','.');
+            }
         }
 
         public void IncreaseNumbers(ref double value1, ref double value2, ref double value3)
@@ -48,42 +52,7 @@ namespace task_3
             for (int index = 0; index < array.Length; index++)
             {
                 sum += array[index];
-            }
-        }
-
-        public void GetMinMaxAndSum(double[] array, out double min, out double max, out double sum)
-        {
-            min = array[0];
-            for (int index = 1; index < array.Length; index++)
-            {
-                if (array[index] < min)
-                {
-                    min = array[index];
-                }
-            }
-
-            max = array[0];
-            for (int index = 1; index < array.Length; index++)
-            {
-                if (array[index] > max)
-                {
-                    max = array[index];
-                }
-            }
-
-            sum = 0;
-            for (int index = 0; index < array.Length; index++)
-            {
-                sum += array[index];
-            }
-        }
-
-        public void Show<T>(T[] array)
-        {
-            foreach (var item in array)
-            {
-                Console.Write($"{item} ");
-            }
+            }        
         }
     }
 }
