@@ -1,33 +1,11 @@
-﻿using System;
-
-namespace task_5
+﻿namespace task_5
 {
-    class Operation
+    public class Operation
     {
-        public void Verify(string data, ref int number)
+        private readonly string temporaryAnswer = "";
+
+        public Operation(int number, int digit)
         {
-            while ((!int.TryParse(data, out number)) || (number <= 0))
-            {
-                Console.WriteLine("Incorrect data, input value again, please.");
-
-                data = Console.ReadLine();
-            }
-        }
-
-        public void VerifyDigit(string data, ref int digit)
-        {
-            while ((!int.TryParse(data, out digit)) || (digit <= 0) || (digit > 9) )
-            {
-                Console.WriteLine("Incorrect data, input value again, please.");
-
-                data = Console.ReadLine();
-            }
-        }
-       
-        public int RemoveDigit(int number, int digit)
-        {
-            string temporaryAnswer = "";
-
             while (true)
             {
                 if ((number % 10) == digit)
@@ -45,13 +23,11 @@ namespace task_5
 
                 number /= 10;
             }
-
-            return int.Parse(temporaryAnswer); 
         }
 
-        public void Show(int value)
+        public int GetNewNumber()
         {
-            Console.WriteLine($"result is {value}.");
+            return int.Parse(temporaryAnswer);
         }
     }
 }

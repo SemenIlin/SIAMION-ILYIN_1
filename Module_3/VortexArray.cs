@@ -4,11 +4,11 @@ namespace Module_3
 {
     class VortexArray
     {
-        private const string format = "{0,5}";
+        private readonly int[,] vortexArray;
 
-        public int[,] CreateVortexArray(int value)
+        public VortexArray(int value)
         {
-            int[,] vortexArray = new int[value, value];
+            vortexArray = new int[value, value];
 
             var left = 0;
             var top = 0;
@@ -31,7 +31,7 @@ namespace Module_3
                     valueArray++;
                 }
 
-                right--;  
+                right--;
                 for (int row = right; row >= left; row--)
                 {
                     vortexArray[bottom, row] = valueArray;
@@ -46,35 +46,16 @@ namespace Module_3
                 }
 
                 left++;
-                if(value * value == valueArray - 1)
+                if (value * value == valueArray - 1)
                 {
                     break;
                 }
             }
+        }
 
+        public int[,] GetVortexArray()
+        {
             return vortexArray;
-        }
-
-        public void Show(int[,] array)
-        {
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    Console.Write(format, array[i, j]);
-                }
-
-                Console.WriteLine();
-            }
-        }
-
-        public void Verify(string data, ref int value)
-        {
-            while (!int.TryParse(data, out value))
-            {
-                Console.WriteLine("Input value again.");
-                data = Console.ReadLine();
-            }
         }
     }
 }

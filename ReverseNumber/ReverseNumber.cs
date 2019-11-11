@@ -1,40 +1,26 @@
-﻿using System;
-
-namespace ReverseNumber
+﻿namespace ReverseNumber
 {
-    class ReverseNumber
+    public class ReverseNumber
     {
-        public void Verify(string data, ref int value)
+        private readonly string result = "";
+
+        public ReverseNumber(int number)
         {
-            while ((!int.TryParse(data, out value)) || (value <= 0))
-            {
-                Console.WriteLine("Incorrect data, input value again, please.");
-
-                data = Console.ReadLine();
-            }
-        }
-
-        public int Reverse(int number)
-        {
-            string result = "";
-
             while (true)
             {
                 result += number % 10;
-                if((number / 10) <= 0)
+                if ((number / 10) <= 0)
                 {
                     break;
                 }
 
                 number /= 10;
             }
-
-            return int.TryParse(result, out number) ? number : 0;
         }
 
-        public void Show(int value)
+        public int GetReverseNumber()
         {
-            Console.WriteLine($"result is {value}.");
+            return int.TryParse(result, out int number) ? number : 0;
         }
     }
 }

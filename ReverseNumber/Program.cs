@@ -2,34 +2,18 @@
 
 namespace ReverseNumber
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var reverseNumber = new ReverseNumber();
-
-            var _value = 0;
             Console.WriteLine("The program is reverse number. Max value contain 9 signs");
-
-            while (true)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Input value.");
-               
-                reverseNumber.Verify(Console.ReadLine(), ref _value);
-                _value = reverseNumber.Reverse(_value);
-                reverseNumber.Show(_value);
-
-                Console.WriteLine();
-                Console.WriteLine("Continue press Enter, Exit press Esc.");
-
-                if (Console.ReadKey().Key == ConsoleKey.Escape)
-                {
-                    break;
-                }
-
-                Console.WriteLine();                
-            }
+            Console.WriteLine();
+            Console.WriteLine("Input number.");
+            int.TryParse(Console.ReadLine(), out int number);
+            var reverse = new ReverseNumber(number);
+            
+            Console.WriteLine($"After reverse result is {reverse.GetReverseNumber()}.");
+            Console.ReadLine();
         }
     }
 }

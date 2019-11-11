@@ -2,33 +2,19 @@
 
 namespace task_2
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var operation = new Operation();
 
-            var _value = 0;
             Console.WriteLine("The program to output a series of natural even numbers.");
+           
+            Console.WriteLine("Input value.");
+            int.TryParse(Console.ReadLine(), out int value);
+            operation.GetEvenNaturalNumbers(value);           
 
-            while (true)
-            {
-                Console.WriteLine();
-
-                Console.WriteLine("Input value.");
-                operation.Verify(Console.ReadLine(), ref _value);
-                operation.Show(_value);
-
-                Console.WriteLine();
-                Console.WriteLine("Continue press Enter, Exit press Esc.");
-
-                if (Console.ReadKey().Key == ConsoleKey.Escape)
-                {
-                    break;
-                }
-
-                Console.WriteLine();
-            }
+            Console.ReadLine();            
         }
     }
 }

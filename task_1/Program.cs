@@ -2,41 +2,31 @@
 
 namespace task_1
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var _value1 = 0;
-            var _value2 = 0;
-            var _multiplication = 0;            
+            int _multiplication;            
 
             var multiplication = new Multiplication();
 
             Console.WriteLine("The program for finding the result of multiplication.");
-
-            while (true)
+            try
             {
-                Console.WriteLine();
-
                 Console.WriteLine("Input first value.");
-                multiplication.Verify(Console.ReadLine(), ref _value1);
+                int.TryParse(Console.ReadLine(), out int value1);
                 Console.WriteLine("Input second value.");
-                multiplication.Verify(Console.ReadLine(), ref _value2);
+                int.TryParse(Console.ReadLine(), out int value2);                
 
-                _multiplication = multiplication.GetResultMultiplication(_value1, _value2);
-
-                multiplication.Show(_multiplication);
-
-                Console.WriteLine();
-                Console.WriteLine("Continue press Enter, Exit press Esc. ");
-
-                if (Console.ReadKey().Key == ConsoleKey.Escape)
-                {
-                    break;
-                }
-
-                Console.WriteLine();
+                _multiplication = multiplication.GetResultMultiplication(value1, value2);
+                Console.WriteLine($"Result is {_multiplication}");
             }
+            catch (InvalidCastException exception)
+            {
+                Console.WriteLine(exception.Message);            
+            }
+
+            Console.ReadLine();
         }
     }
 }

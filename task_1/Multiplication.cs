@@ -2,19 +2,9 @@
 
 namespace task_1
 {
-    class Multiplication
+    public class Multiplication
     {
         private int _multiplication;
-
-        public void Verify(string data, ref int value)
-        {
-            while (!int.TryParse(data, out value))
-            {
-                Console.WriteLine("Input value again.");
-
-                data = Console.ReadLine();
-            }
-        }
 
         public int GetResultMultiplication(int value1, int value2)
         {
@@ -53,11 +43,6 @@ namespace task_1
             }
 
             return _multiplication;
-        }
-
-        public void Show(int multiplication)
-        {
-            Console.WriteLine($"Result of multipliction is {multiplication}.");
         }
     }
 }

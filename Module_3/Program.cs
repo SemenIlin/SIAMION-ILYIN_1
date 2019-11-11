@@ -4,35 +4,34 @@ namespace Module_3
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var vortexArray = new VortexArray();
-
-            int _lengthArray = 0;
-            int[,] _array;
+            string format = "{0,5}";
+            int[,] array;
 
             Console.WriteLine("The program for create vortex array.");
-            while (true)
+            try
             {
                 Console.WriteLine("Input length array.");
-                vortexArray.Verify(Console.ReadLine(), ref _lengthArray);
-                while (_lengthArray < 0)
-                {
-                    Console.WriteLine("The value must be greater than 0 ");
-                    vortexArray.Verify(Console.ReadLine(), ref _lengthArray);
-                }
+                int.TryParse(Console.ReadLine(),out int length);
+                var vortexArray = new VortexArray(length);              
 
-                _array = vortexArray.CreateVortexArray(_lengthArray);
-                vortexArray.Show(_array);
+                array = vortexArray.GetVortexArray();
+                for (int i = 0; i < array.GetLength(0); i++)
+                {
+                    for (int j = 0; j < array.GetLength(1); j++)
+                    {
+                        Console.Write(format, array[i, j]);
+                    }
+                    Console.WriteLine();
+                }
                 
-                Console.WriteLine("\n");
-                Console.WriteLine("Continue press Enter, Exit press Esc.");
-
-                if (Console.ReadKey().Key == ConsoleKey.Escape)
-                {
-                    break;
-                }
             }
+            catch (OverflowException exception)
+            {
+                Console.WriteLine(exception.Message);            
+            }
+
 
             Console.WriteLine("\n");
             Bissection bissection = new Bissection();
