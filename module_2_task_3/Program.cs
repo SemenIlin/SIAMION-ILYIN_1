@@ -1,39 +1,22 @@
 ﻿using System;
+using System.Globalization;
 
 namespace module_2_task_3
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var change = new ChangeValue();
+            NumberStyles style = NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign;
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-GB");
+            
+            Console.WriteLine("Input first value.");
+            float.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out float value1);
+            Console.WriteLine("Input second value. ");
+            float.TryParse(Console.ReadLine().Replace(',', '.'), style, culture, out float value2);
+            var change = new Change(value1, value2);
 
-            // Declare variables.
-            float _value1 = 0F;
-            float _value2 = 0F;
-
-            while (true)
-            {
-                Console.WriteLine("Input first value. ");
-                change.Verify(Console.ReadLine(), ref _value1);
-
-                Console.WriteLine("Input second value. ");
-                change.Verify(Console.ReadLine(), ref _value2);                
-
-                change.Change(ref _value1, ref _value2);
-                change.Show(_value1, _value2);
-
-                Console.WriteLine();
-                Console.WriteLine("Continue press Enter, Exit press Esc.");
-
-                if (Console.ReadKey().Key == ConsoleKey.Escape)
-                {
-                    break;
-                }
-
-                Console.WriteLine();
-            }
-
+            Console.WriteLine($"First value is {change.GetFirstValue()} , second value is {change.GetSecondValue()}");
             Console.ReadLine();
         }
     }

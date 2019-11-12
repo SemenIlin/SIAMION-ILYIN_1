@@ -2,36 +2,37 @@
 
 namespace module_2_task_1
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var taxation = new Taxation();
-
-            var _countCompanies = 0;
-            var _tax = 0.0F;
-            var _totalFix = 0.0F;
-
-            while (true)
+            int countCompanies;
+            float perCent;
+            float totalFix;
+            try
             {
                 Console.WriteLine("Input count companies.");
-                taxation.Verify(Console.ReadLine(), ref _countCompanies);
+                countCompanies = int.TryParse(Console.ReadLine(), out countCompanies) ?
+                    (countCompanies > 0 ? countCompanies : throw new Exception("Еhe value must be greater 0 ")) :
+                    throw new InvalidCastException();
 
                 Console.WriteLine("Input size tax in per cent.");
-                taxation.Verify(Console.ReadLine(), ref _tax);
+                perCent = float.TryParse(Console.ReadLine(), out perCent) ? 
+                    (perCent > 0 ? perCent : throw new Exception("Еhe value must be greater 0 ")) :
+                    throw new InvalidCastException();
 
-                _totalFix = taxation.CalculateTotalTax(_countCompanies, _tax);
-                taxation.Show(_totalFix);
+                var taxation = new Taxation(countCompanies, perCent);
 
-                Console.WriteLine();
-                Console.WriteLine("Continue press Enter, Exit press Esc. ");
-
-                if (Console.ReadKey().Key == ConsoleKey.Escape)
-                {
-                    break;
-                }
-
-                Console.WriteLine();
+                totalFix = taxation.CalculateTotalTax();
+                taxation.Show();
+            }
+            catch (InvalidCastException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.Message);
             }
 
             Console.ReadLine();

@@ -4,17 +4,17 @@ namespace Module_2
 {
     class Triangle : ICalculate
     {
-        private double _height;
-        private double _width;
-
-        private int _firstAngle;
-        private int _secondAngle;
-
+        private readonly double _height;
+        private readonly double _width;
+                
+        private readonly int _firstAngle;
+        private readonly int _secondAngle;
+                
         private double _firstSideTriangle;
         private double _secondSideTriangle;
         private double _thirdSideTriangle;
 
-        public Triangle() { }
+        private bool _isExistsTriangle;
 
         public Triangle(double height, double width)
         {
@@ -41,114 +41,6 @@ namespace Module_2
             _firstSideTriangle = firstSideTriangle;
             _firstAngle = firstAngle;
             _secondAngle = secondAngle;
-        }
-
-        private bool _isExistsTriangle;
-
-        private double ConvertAngle(double angle)
-        {
-            return angle * Math.PI / 180;
-        }
-
-        private double CalculateTriangleSquare(double height, double width)
-        {
-            return Math.Round((height * width / 2), 2);
-        }
-
-        private double CalculateTriangleSquare(double firstSide, double secondSide, double thirdSide)
-        {
-            double halfPerimetr = 0;
-            double square = 0.0;
-
-            halfPerimetr = (firstSide + secondSide + thirdSide) / 2;
-            square = Math.Pow((halfPerimetr * (halfPerimetr - firstSide) * (halfPerimetr - secondSide) * (halfPerimetr - thirdSide)), 0.5);
-
-            return Math.Round(square, 2);
-        }
-        
-        private double CalculateTriangleSquare(double firstSide, double secondSide, int angle)
-        {
-            return Math.Round((firstSide * secondSide * Math.Sin(ConvertAngle(angle)) / 2), 2);
-        }
-
-        private double CalculateTriangleSquare(double side, int firstAngle, int secondAngle)
-        {
-            double square = Math.Pow(side, 2) * Math.Sin(ConvertAngle(firstAngle)) * Math.Sin(ConvertAngle(secondAngle)) / (Math.Sin(ConvertAngle(180 - firstAngle - secondAngle)) * 2);
-
-            return Math.Round(square, 2);
-        }
-        
-        private double CalculateTrianglePerimeter(double firstSide, double secondSide, double thirdSide)
-        {
-            return Math.Round((firstSide + secondSide + thirdSide), 2);
-        }
-
-        private double CalculateTrianglePerimeter(double firstSide, double secondSide, int angleBetweenSide)
-        {
-            double perimeter;
-            double thirdSide;
-
-            thirdSide = Math.Sqrt(Math.Pow(firstSide, 2) + Math.Pow(secondSide, 2) - 2 * firstSide * secondSide * Math.Cos(ConvertAngle(angleBetweenSide)));
-
-            perimeter = firstSide + secondSide + thirdSide;
-
-            return Math.Round(perimeter, 2);
-        }
-
-        private double CalculateTrianglePerimeter(double side, int firstAngle, int secondAngle)
-        {
-            double secondSide;
-            double thirdSide;
-            // It is numerator by found height of triangle.
-            double numerator;
-            // It is denominator by found height of triangle.
-            double denominator;
-
-            numerator = side * Math.Tan(ConvertAngle(firstAngle));
-            denominator = Math.Tan(ConvertAngle(firstAngle)) / Math.Tan(ConvertAngle(secondAngle)) + 1;
-
-            secondSide = (numerator / denominator) / Math.Sin(ConvertAngle(firstAngle));
-            thirdSide = (numerator / denominator) / Math.Sin(ConvertAngle(secondAngle));
-
-            return Math.Round((side + secondSide + thirdSide), 2);
-        }
-
-        private bool IsExistsTriangle(double firstSide, double secondSide, double thirdSide)
-        {
-            if ((firstSide >= secondSide) && (firstSide >= thirdSide) && (firstSide < (secondSide + thirdSide)) ||
-               (secondSide >= firstSide) && (secondSide >= thirdSide) && (secondSide < (firstSide + thirdSide)) ||
-               (thirdSide >= firstSide) && (thirdSide >= secondSide) && (thirdSide < (firstSide + secondSide)))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private bool IsExistsTriangle(int firstAngle, int secondAngle)
-        {
-            if ((firstAngle + secondAngle) < 180)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private bool IsExistsTriangle(int firstAngle)
-        {
-            if (firstAngle < 180)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public double Calculate(int operation, int formula)
@@ -274,6 +166,112 @@ namespace Module_2
             _secondSideTriangle = _thirdSideTriangle = _firstSideTriangle;
 
             return Math.Round(_firstSideTriangle, 2);
+        }
+
+        private double ConvertAngle(double angle)
+        {
+            return angle * Math.PI / 180;
+        }
+
+        private double CalculateTriangleSquare(double height, double width)
+        {
+            return Math.Round((height * width / 2), 2);
+        }
+
+        private double CalculateTriangleSquare(double firstSide, double secondSide, double thirdSide)
+        {
+            double halfPerimetr;
+            double square;
+
+            halfPerimetr = (firstSide + secondSide + thirdSide) / 2;
+            square = Math.Pow((halfPerimetr * (halfPerimetr - firstSide) * (halfPerimetr - secondSide) * (halfPerimetr - thirdSide)), 0.5);
+
+            return Math.Round(square, 2);
+        }
+        
+        private double CalculateTriangleSquare(double firstSide, double secondSide, int angle)
+        {
+            return Math.Round((firstSide * secondSide * Math.Sin(ConvertAngle(angle)) / 2), 2);
+        }
+
+        private double CalculateTriangleSquare(double side, int firstAngle, int secondAngle)
+        {
+            double square = Math.Pow(side, 2) * Math.Sin(ConvertAngle(firstAngle)) * Math.Sin(ConvertAngle(secondAngle)) / (Math.Sin(ConvertAngle(180 - firstAngle - secondAngle)) * 2);
+
+            return Math.Round(square, 2);
+        }
+        
+        private double CalculateTrianglePerimeter(double firstSide, double secondSide, double thirdSide)
+        {
+            return Math.Round((firstSide + secondSide + thirdSide), 2);
+        }
+
+        private double CalculateTrianglePerimeter(double firstSide, double secondSide, int angleBetweenSide)
+        {
+            double perimeter;
+            double thirdSide;
+
+            thirdSide = Math.Sqrt(Math.Pow(firstSide, 2) + Math.Pow(secondSide, 2) - 2 * firstSide * secondSide * Math.Cos(ConvertAngle(angleBetweenSide)));
+
+            perimeter = firstSide + secondSide + thirdSide;
+
+            return Math.Round(perimeter, 2);
+        }
+
+        private double CalculateTrianglePerimeter(double side, int firstAngle, int secondAngle)
+        {
+            double secondSide;
+            double thirdSide;
+            // It is numerator by found height of triangle.
+            double numerator;
+            // It is denominator by found height of triangle.
+            double denominator;
+
+            numerator = side * Math.Tan(ConvertAngle(firstAngle));
+            denominator = Math.Tan(ConvertAngle(firstAngle)) / Math.Tan(ConvertAngle(secondAngle)) + 1;
+
+            secondSide = (numerator / denominator) / Math.Sin(ConvertAngle(firstAngle));
+            thirdSide = (numerator / denominator) / Math.Sin(ConvertAngle(secondAngle));
+
+            return Math.Round((side + secondSide + thirdSide), 2);
+        }
+
+        private bool IsExistsTriangle(double firstSide, double secondSide, double thirdSide)
+        {
+            if ((firstSide >= secondSide) && (firstSide >= thirdSide) && (firstSide < (secondSide + thirdSide)) ||
+               (secondSide >= firstSide) && (secondSide >= thirdSide) && (secondSide < (firstSide + thirdSide)) ||
+               (thirdSide >= firstSide) && (thirdSide >= secondSide) && (thirdSide < (firstSide + secondSide)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool IsExistsTriangle(int firstAngle, int secondAngle)
+        {
+            if ((firstAngle + secondAngle) < 180)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool IsExistsTriangle(int firstAngle)
+        {
+            if (firstAngle < 180)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

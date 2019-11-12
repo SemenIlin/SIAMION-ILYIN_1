@@ -2,93 +2,28 @@
 
 namespace module_2_task_1
 {
-    class Taxation
+    public class Taxation
     {
-        private const int _income = 500;
+        private const int COMPANY_INCOME = 500;
+        private readonly int countCompanies;
+        private readonly float tax;
+        private float totalTax;
 
-        private string OutputErrorMessage(string data)
+        public Taxation(int countCompanies, float tax)
         {
-            char [] tempArray = data.ToCharArray();
-
-            int countPoint = 0;
-            int countSign = 0;
-
-            foreach (char ch in tempArray)
-            {
-                if (Char.IsNumber(ch))
-                {
-                    continue;
-                }
-                else if( ch == '.')
-                {
-                    countPoint++;
-
-                    if(countPoint > 1)
-                    {
-                       return "Incorrect data.";
-                    }
-                }
-                else if (ch == '-')
-                {
-                    countSign++;
-
-                    if (countSign > 1)
-                    {
-                        return "Incorrect data.";
-                    }
-                }
-                else
-                {
-                    return "Incorrect data.";
-                }
-            }
-
-            if((countSign == 1) && (countPoint == 0))
-            {
-                return "Input data < 0.";
-            }
-            else if((countSign == 0) && (countPoint == 1))
-            {
-                return "Input data include '.' in place ','.";
-            }
-            else if((countSign == 1) && (countPoint == 1))
-            {
-                return "Input data < 0. " + "Input data include '.' in place ','.";
-            }
-
-            return "Incorrect data.";
-        }    
-
-        public void Verify(string data, ref int value)
-        {
-            while ((!int.TryParse(data, out value)) || (value < 0))
-            {
-                Console.WriteLine(OutputErrorMessage(data));
-                Console.WriteLine("Input value again.");
-
-                data = Console.ReadLine();
-            }
+            this.countCompanies = countCompanies;
+            this.tax = tax;
         }
 
-        public void Verify(string data, ref float value)
+        public float CalculateTotalTax()
         {
-            while ((!float.TryParse(data, out value)) || (value < 0) || (value > 100))
-            {
-                Console.WriteLine(OutputErrorMessage(data));
-                Console.WriteLine("Input value again.");
-
-                data = Console.ReadLine();
-            }
+            totalTax = (float)countCompanies * COMPANY_INCOME * tax / 100;
+            return totalTax;
         }
         
-        public float CalculateTotalTax(int countCompanies, float tax)
+        public void Show()
         {
-            return (float)countCompanies * _income * tax / 100;
-        }
-        
-        public void Show(float totalFix)
-        {
-            Console.WriteLine($"The total amount of tax = {totalFix}.");
+            Console.WriteLine($"The total amount of tax = {totalTax}.");
         }
     }
 }

@@ -2,37 +2,25 @@
 
 namespace Module_2
 {
-    class Circle : ICalculate
+    public class Circle
     {
-        private double _radius;
-
-        public Circle() { }
+        private readonly double square;
+        private readonly double perimeter;
 
         public Circle(double radius)
         {
-            _radius = radius;
+            square = Math.Round(Math.PI * Math.Pow(radius, 2), 2);
+            perimeter = Math.Round(Math.PI * radius * 2, 2);
         }
 
-        private double CalculateCircleSquare(double radius)
+        public double GetSquare()
         {
-            return Math.Round(Math.PI * Math.Pow(radius, 2), 2);
+            return square;
         }
 
-        private double CalculateCirclePerimeter(double radius)
+        public double GetPerimeter()
         {
-            return Math.Round(Math.PI * radius * 2, 2);
-        }
-
-        public double Calculate(int operation, int formula = 1)
-        {
-            if (operation == 1)
-            {
-                return CalculateCircleSquare(_radius);
-            }
-            else 
-            {
-                return CalculateCirclePerimeter(_radius);
-            }
+            return perimeter;
         }
 
         public double GetParameterFromPerimeter(double perimeter)
